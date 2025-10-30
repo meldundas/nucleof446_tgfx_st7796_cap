@@ -9,7 +9,6 @@
 #include <gui/screen_screen/screenPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/containers/scrollers/ScrollWheel.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
@@ -31,7 +30,6 @@ protected:
     touchgfx::Box __background;
     touchgfx::Box box1;
     touchgfx::TextArea textArea1;
-    touchgfx::ScrollWheel scrollWheel1;
     touchgfx::ButtonWithIcon buttonWithIconUp;
     touchgfx::ButtonWithIcon buttonWithIconDown;
     touchgfx::TextAreaWithOneWildcard textAreaCount;
@@ -43,16 +41,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaCountBuffer[TEXTAREACOUNT_SIZE];
 
 private:
-
-    /*
-     * Callback Declarations
-     */
-    touchgfx::Callback<screenViewBase, touchgfx::DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
-
-    /*
-     * Callback Handler Declarations
-     */
-    void updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
 
 };
 

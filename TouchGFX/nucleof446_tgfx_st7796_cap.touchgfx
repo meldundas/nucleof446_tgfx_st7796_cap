@@ -31,26 +31,13 @@
             "AutoSize": true
           },
           {
-            "Type": "ScrollWheel",
-            "Name": "scrollWheel1",
-            "X": 190,
-            "Y": 229,
-            "Width": 100,
-            "Height": 50,
-            "NumberofItems": 10,
-            "Easing": "Back",
-            "EasingOption": "Out",
-            "SwipeAcceleration": 1.0,
-            "DragAcceleration": 1.0,
-            "OverShootPercentage": 75
-          },
-          {
             "Type": "ButtonWithIcon",
             "Name": "buttonWithIconUp",
             "X": 27,
             "Y": 135,
             "Width": 110,
             "Height": 50,
+            "LockPosition": true,
             "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_pressed.png",
             "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_normal.png",
             "IconPressed": "__generated\\icon_theme_images_navigation_arrow_upward_50_50_E8F6FB.svg.png",
@@ -69,7 +56,7 @@
             "Height": 50,
             "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_pressed.png",
             "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_normal.png",
-            "IconPressed": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
+            "IconPressed": "__generated\\icon_theme_images_navigation_arrow_downward_50_50_E8F6FB.svg.png",
             "IconReleased": "__generated\\icon_theme_images_action_arrow_circle_down_50_50_E8F6FB.svg.png",
             "IconX": 30,
             "IconHeight": 50,
@@ -104,8 +91,8 @@
     "CustomContainerDefinitions": [],
     "Name": "nucleof446_tgfx_st7796_cap",
     "Resolution": {
-      "Width": 320,
-      "Height": 480
+      "Width": 480,
+      "Height": 320
     },
     "SelectedColorDepth": 16,
     "StartupScreenName": "screen",
@@ -124,8 +111,8 @@
     ],
     "AvailableResolutions": [
       {
-        "Width": 320,
-        "Height": 480
+        "Width": 480,
+        "Height": 320
       }
     ],
     "PhysicalButtons": [],

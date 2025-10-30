@@ -6,8 +6,7 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include <images/BitmapDatabase.hpp>
 
-screenViewBase::screenViewBase() :
-    updateItemCallback(this, &screenViewBase::updateItemCallbackHandler)
+screenViewBase::screenViewBase()
 {
     __background.setPosition(0, 0, 480, 320);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -23,24 +22,13 @@ screenViewBase::screenViewBase() :
     textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_L79T));
     add(textArea1);
 
-    scrollWheel1.setPosition(190, 229, 100, 50);
-    scrollWheel1.setHorizontal(false);
-    scrollWheel1.setCircular(false);
-    scrollWheel1.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
-    scrollWheel1.setSwipeAcceleration(10);
-    scrollWheel1.setDragAcceleration(10);
-    scrollWheel1.setNumberOfItems(10);
-    scrollWheel1.setSelectedItemOffset(0);
-    scrollWheel1.setOvershootPercentage(75);
-    add(scrollWheel1);
-
     buttonWithIconUp.setXY(27, 135);
     buttonWithIconUp.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_ARROW_CIRCLE_UP_50_50_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_NAVIGATION_ARROW_UPWARD_50_50_E8F6FB_SVG_ID));
     buttonWithIconUp.setIconXY(30, 0);
     add(buttonWithIconUp);
 
     buttonWithIconDown.setXY(344, 135);
-    buttonWithIconDown.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_ARROW_CIRCLE_DOWN_50_50_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_DONE_50_50_E8F6FB_SVG_ID));
+    buttonWithIconDown.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_ARROW_CIRCLE_DOWN_50_50_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_NAVIGATION_ARROW_DOWNWARD_50_50_E8F6FB_SVG_ID));
     buttonWithIconDown.setIconXY(30, 0);
     add(buttonWithIconDown);
 
@@ -60,11 +48,6 @@ screenViewBase::~screenViewBase()
 }
 
 void screenViewBase::setupScreen()
-{
-    scrollWheel1.initialize();
-}
-
-void screenViewBase::updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex)
 {
 
 }

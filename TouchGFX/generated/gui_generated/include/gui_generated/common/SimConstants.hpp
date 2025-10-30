@@ -4,8 +4,8 @@
 #ifndef SIMCONSTANTS_HPP
 #define SIMCONSTANTS_HPP
 
-static unsigned short SIM_WIDTH = 320;
-static unsigned short SIM_HEIGHT = 480;
+static unsigned short SIM_WIDTH = 480;
+static unsigned short SIM_HEIGHT = 320;
 #define SIM_TITLE "nucleof446_tgfx_st7796_cap"
 
 #endif // SIMCONSTANTS_HPP

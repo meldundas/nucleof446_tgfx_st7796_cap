@@ -64,8 +64,8 @@ uint8_t FT6336_TouchGFXSampleTouch(int32_t *x, int32_t *y)
     {
         unsigned int temp_x, temp_y;
         ft6336_get_touch1_position(&temp_x, &temp_y);
-        *x = temp_x;
-        *y = temp_y;
+        *x = 480 - temp_y;
+        *y = temp_x;
         touch_detected = 1;
     }
     return touch_detected;
