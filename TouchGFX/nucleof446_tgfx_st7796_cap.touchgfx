@@ -1,0 +1,158 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "screen",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 480,
+            "Height": 320,
+            "Color": {
+              "Red": 38,
+              "Green": 11,
+              "Blue": 189
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 151,
+            "Width": 178,
+            "Height": 41,
+            "TextId": "__SingleUse_L79T",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 250,
+              "Green": 222,
+              "Blue": 7
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "ScrollWheel",
+            "Name": "scrollWheel1",
+            "X": 190,
+            "Y": 229,
+            "Width": 100,
+            "Height": 50,
+            "NumberofItems": 10,
+            "Easing": "Back",
+            "EasingOption": "Out",
+            "SwipeAcceleration": 1.0,
+            "DragAcceleration": 1.0,
+            "OverShootPercentage": 75
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonWithIconUp",
+            "X": 27,
+            "Y": 135,
+            "Width": 110,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_normal.png",
+            "IconPressed": "__generated\\icon_theme_images_navigation_arrow_upward_50_50_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_action_arrow_circle_up_50_50_E8F6FB.svg.png",
+            "IconX": 30,
+            "IconHeight": 50,
+            "IconWidth": 50,
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\tiny_round_normal.json"
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonWithIconDown",
+            "X": 344,
+            "Y": 135,
+            "Width": 110,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_normal.png",
+            "IconPressed": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_action_arrow_circle_down_50_50_E8F6FB.svg.png",
+            "IconX": 30,
+            "IconHeight": 50,
+            "IconWidth": 50,
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\tiny_round_normal.json"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textAreaCount",
+            "X": 203,
+            "Y": 135,
+            "Width": 75,
+            "Height": 41,
+            "TextId": "__SingleUse_IMD0",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 237,
+              "Green": 230,
+              "Blue": 230
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "Counter",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          }
+        ],
+        "Interactions": []
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "Name": "nucleof446_tgfx_st7796_cap",
+    "Resolution": {
+      "Width": 320,
+      "Height": 480
+    },
+    "SelectedColorDepth": 16,
+    "StartupScreenName": "screen",
+    "SelectedStartupLanguage": "GB",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      16
+    ],
+    "AvailableLCDs": {
+      "16": "LCD16bppSerialFlash"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 320,
+        "Height": 480
+      }
+    ],
+    "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD16bppSerialFlash": {
+        "Id": "LCD16bppSerialFlash",
+        "IsEnabled": false
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "Family": "STM32F4",
+    "SubFamily": "STM32F446",
+    "Toolchain": "STM32CubeIDE",
+    "Platform": "m4",
+    "ProjectFile": "../nucleof446_tgfx_st7796_cap.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": [],
+    "AdditionalFeatures": []
+  },
+  "Version": "4.26.0"
+}
