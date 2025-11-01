@@ -3,36 +3,48 @@
 /*********************************************************************************/
 #include <gui_generated/screen_screen/screenViewBase.hpp>
 #include <touchgfx/Color.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 #include <images/BitmapDatabase.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
-screenViewBase::screenViewBase()
+screenViewBase::screenViewBase() :
+    updateItemCallback(this, &screenViewBase::updateItemCallbackHandler),
+    buttonCallback(this, &screenViewBase::buttonCallbackHandler)
 {
     __background.setPosition(0, 0, 480, 320);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
     box1.setPosition(0, 0, 480, 320);
-    box1.setColor(touchgfx::Color::getColorFromRGB(38, 11, 189));
+    box1.setColor(touchgfx::Color::getColorFromRGB(11, 30, 92));
     add(box1);
 
-    textArea1.setXY(151, 0);
-    textArea1.setColor(touchgfx::Color::getColorFromRGB(250, 222, 7));
-    textArea1.setLinespacing(0);
-    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_L79T));
-    add(textArea1);
+    scrollWheel.setPosition(45, 78, 390, 215);
+    scrollWheel.setHorizontal(false);
+    scrollWheel.setCircular(true);
+    scrollWheel.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    scrollWheel.setSwipeAcceleration(10);
+    scrollWheel.setDragAcceleration(10);
+    scrollWheel.setNumberOfItems(20);
+    scrollWheel.setSelectedItemOffset(5);
+    scrollWheel.setOvershootPercentage(75);
+    scrollWheel.setDrawableSize(70, 0);
+    scrollWheel.setDrawables(scrollWheelListItems, updateItemCallback);
+    scrollWheel.animateToItem(0, 0);
+    add(scrollWheel);
 
-    buttonWithIconUp.setXY(27, 135);
+    buttonWithIconUp.setXY(24, 6);
     buttonWithIconUp.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_ARROW_CIRCLE_UP_50_50_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_NAVIGATION_ARROW_UPWARD_50_50_E8F6FB_SVG_ID));
     buttonWithIconUp.setIconXY(30, 0);
+    buttonWithIconUp.setAction(buttonCallback);
     add(buttonWithIconUp);
 
-    buttonWithIconDown.setXY(344, 135);
+    buttonWithIconDown.setXY(341, 6);
     buttonWithIconDown.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_ARROW_CIRCLE_DOWN_50_50_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_NAVIGATION_ARROW_DOWNWARD_50_50_E8F6FB_SVG_ID));
     buttonWithIconDown.setIconXY(30, 0);
+    buttonWithIconDown.setAction(buttonCallback);
     add(buttonWithIconDown);
 
-    textAreaCount.setXY(203, 135);
+    textAreaCount.setXY(203, 6);
     textAreaCount.setColor(touchgfx::Color::getColorFromRGB(237, 230, 230));
     textAreaCount.setLinespacing(0);
     Unicode::snprintf(textAreaCountBuffer, TEXTAREACOUNT_SIZE, "%s", touchgfx::TypedText(T_COUNTER).getText());
@@ -40,6 +52,11 @@ screenViewBase::screenViewBase()
     textAreaCount.resizeToCurrentText();
     textAreaCount.setTypedText(touchgfx::TypedText(T___SINGLEUSE_IMD0));
     add(textAreaCount);
+
+    box2.setPosition(76, 160, 265, 53);
+    box2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    box2.setAlpha(24);
+    add(box2);
 }
 
 screenViewBase::~screenViewBase()
@@ -49,5 +66,37 @@ screenViewBase::~screenViewBase()
 
 void screenViewBase::setupScreen()
 {
+    scrollWheel.initialize();
+    for (int i = 0; i < scrollWheelListItems.getNumberOfDrawables(); i++)
+    {
+        scrollWheelListItems[i].initialize();
+    }
+}
 
+void screenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithIconUp)
+    {
+        //InteractionUp
+        //When buttonWithIconUp clicked execute C++ code
+        //Execute C++ code
+        presenter->incrementCount();
+    }
+    if (&src == &buttonWithIconDown)
+    {
+        //InteractionDown
+        //When buttonWithIconDown clicked execute C++ code
+        //Execute C++ code
+        presenter->decrementCount();
+    }
+}
+
+void screenViewBase::updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex)
+{
+    if (items == &scrollWheelListItems)
+    {
+        touchgfx::Drawable* d = items->getDrawable(containerIndex);
+        MenuElement* cc = (MenuElement*)d;
+        scrollWheelUpdateItem(*cc, itemIndex);
+    }
 }

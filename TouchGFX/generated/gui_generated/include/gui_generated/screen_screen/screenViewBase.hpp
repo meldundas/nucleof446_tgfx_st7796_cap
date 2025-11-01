@@ -8,7 +8,8 @@
 #include <mvp/View.hpp>
 #include <gui/screen_screen/screenPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/containers/scrollers/ScrollWheel.hpp>
+#include <gui/containers/MenuElement.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
@@ -18,6 +19,35 @@ public:
     screenViewBase();
     virtual ~screenViewBase();
     virtual void setupScreen();
+
+    virtual void scrollWheelUpdateItem(MenuElement& item, int16_t itemIndex)
+    {
+        // Override and implement this function in screen
+    }
+
+    /*
+     * Custom Actions
+     */
+    virtual void action1()
+    {
+        // Override and implement this function in Screen1
+    }
+    
+    virtual void action2()
+    {
+        // Override and implement this function in Screen1
+    }
+    
+    virtual void action3()
+    {
+        // Override and implement this function in Screen1
+    }
+    
+    virtual void action4()
+    {
+        // Override and implement this function in Screen1
+    }
+    
 
 protected:
     FrontendApplication& application() {
@@ -29,10 +59,12 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::TextArea textArea1;
+    touchgfx::ScrollWheel scrollWheel;
+    touchgfx::DrawableListItems<MenuElement, 5> scrollWheelListItems;
     touchgfx::ButtonWithIcon buttonWithIconUp;
     touchgfx::ButtonWithIcon buttonWithIconDown;
     touchgfx::TextAreaWithOneWildcard textAreaCount;
+    touchgfx::Box box2;
 
     /*
      * Wildcard Buffers
@@ -41,6 +73,18 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaCountBuffer[TEXTAREACOUNT_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<screenViewBase, touchgfx::DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
+    touchgfx::Callback<screenViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

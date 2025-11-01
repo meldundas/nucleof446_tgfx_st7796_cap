@@ -10,34 +10,35 @@
             "Width": 480,
             "Height": 320,
             "Color": {
-              "Red": 38,
-              "Green": 11,
-              "Blue": 189
+              "Red": 11,
+              "Green": 30,
+              "Blue": 92
             }
           },
           {
-            "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 151,
-            "Width": 178,
-            "Height": 41,
-            "TextId": "__SingleUse_L79T",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 250,
-              "Green": 222,
-              "Blue": 7
-            },
-            "AutoSize": true
+            "Type": "ScrollWheel",
+            "Name": "scrollWheel",
+            "X": 45,
+            "Y": 78,
+            "Width": 390,
+            "Height": 215,
+            "SelectedItemOffset": 5,
+            "IsCircular": true,
+            "ItemTemplateName": "MenuElement",
+            "NumberofItems": 20,
+            "Easing": "Back",
+            "EasingOption": "Out",
+            "SwipeAcceleration": 1.0,
+            "DragAcceleration": 1.0,
+            "OverShootPercentage": 75
           },
           {
             "Type": "ButtonWithIcon",
             "Name": "buttonWithIconUp",
-            "X": 27,
-            "Y": 135,
+            "X": 24,
+            "Y": 6,
             "Width": 110,
             "Height": 50,
-            "LockPosition": true,
             "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_pressed.png",
             "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_normal.png",
             "IconPressed": "__generated\\icon_theme_images_navigation_arrow_upward_50_50_E8F6FB.svg.png",
@@ -50,8 +51,8 @@
           {
             "Type": "ButtonWithIcon",
             "Name": "buttonWithIconDown",
-            "X": 344,
-            "Y": 135,
+            "X": 341,
+            "Y": 6,
             "Width": 110,
             "Height": 50,
             "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_pressed.png",
@@ -67,7 +68,7 @@
             "Type": "TextArea",
             "Name": "textAreaCount",
             "X": 203,
-            "Y": 135,
+            "Y": 6,
             "Width": 75,
             "Height": 41,
             "TextId": "__SingleUse_IMD0",
@@ -83,12 +84,103 @@
               "UseBuffer": true,
               "BufferSize": 10
             }
+          },
+          {
+            "Type": "Box",
+            "Name": "box2",
+            "X": 76,
+            "Y": 160,
+            "Width": 265,
+            "Height": 53,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 24
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "InteractionUp",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithIconUp"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Includes": "",
+              "Code": "presenter->incrementCount();"
+            }
+          },
+          {
+            "InteractionName": "InteractionDown",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithIconDown"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "presenter->decrementCount();"
+            }
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "action1"
+          },
+          {
+            "Name": "action2"
+          },
+          {
+            "Name": "action3"
+          },
+          {
+            "Name": "action4"
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "MenuElement",
+        "Width": 390,
+        "Height": 70,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "text",
+            "X": 93,
+            "Y": 23,
+            "Width": 177,
+            "Height": 24,
+            "TextId": "__SingleUse_TFNS",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_0DIP",
+              "UseBuffer": true,
+              "BufferSize": 5
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "icon",
+            "X": 34,
+            "Y": 17,
+            "Width": 36,
+            "Height": 36,
+            "RelativeFilename": "icon00.png"
           }
         ],
         "Interactions": []
       }
     ],
-    "CustomContainerDefinitions": [],
     "Name": "nucleof446_tgfx_st7796_cap",
     "Resolution": {
       "Width": 480,

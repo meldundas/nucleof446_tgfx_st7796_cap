@@ -25,9 +25,17 @@ public:
      */
     virtual void deactivate();
 
-    virtual ~screenPresenter() {}
+        virtual ~screenPresenter() {}
 
-private:
+    
+
+        void incrementCount();
+
+        void decrementCount();
+
+    
+
+    private:
     screenPresenter();
 
     screenView& view;

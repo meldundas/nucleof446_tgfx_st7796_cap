@@ -11,6 +11,15 @@ public:
     virtual ~screenView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+    void setCount(int count);
+    void changeCount(char op);
+
+    virtual void scrollWheelUpdateItem(MenuElement& item, int16_t itemIndex)
+    {
+        item.setNumber(itemIndex);
+    }
+
 protected:
 };
 
