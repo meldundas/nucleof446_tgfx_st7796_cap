@@ -1,4 +1,4 @@
-#include "ft6336.h"
+#include <z_ft6336.h>
 #include "i2c.h"
 
 extern I2C_HandleTypeDef hi2c1;

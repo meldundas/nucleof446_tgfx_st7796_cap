@@ -23,9 +23,8 @@
 /* USER CODE BEGIN STM32TouchController */
 
 #include "main.h"
-#include "ft6336.h"
-
 #include <STM32TouchController.hpp>
+#include <z_ft6336.h>
 
 void STM32TouchController::init()
 {

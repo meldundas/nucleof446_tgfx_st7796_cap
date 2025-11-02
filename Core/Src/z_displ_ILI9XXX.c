@@ -51,6 +51,7 @@ static uint8_t *dispBuffer=dispBuffer1;
  * 			device selected if CS low
  ******************************************/
 void Displ_Select(void) {
+#ifndef ST7796
 	if (TOUCH_SPI==DISPL_SPI){														// if SPI port shared (display <-> touch)
 		if (HAL_GPIO_ReadPin(DISPL_CS_GPIO_Port, DISPL_CS_Pin)) {					// if display not yet selected
 			HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_SET); 		// unselect touch
@@ -58,6 +59,7 @@ void Displ_Select(void) {
 			HAL_GPIO_WritePin(DISPL_CS_GPIO_Port, DISPL_CS_Pin, GPIO_PIN_RESET);	// select display
 		}
 	}
+#endif
 }
 
 
@@ -272,15 +274,20 @@ void Displ_SetAddressWindow(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) 
  * @param	orientation	display orientation
  *****************************************************/
 void Displ_Init(Displ_Orientat_e orientation){
+#ifndef ST7796
 	if (TOUCH_SPI==DISPL_SPI){													// if touch and display share the same SPI port
 		HAL_GPIO_WritePin(DISPL_CS_GPIO_Port, DISPL_CS_Pin, GPIO_PIN_SET); 		// unselect display (will be selected at writing time)
 		HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_SET);		// unselect touch (will be selected at writing time)
-	} else {																	// otherwise leave both port permanently selected
+	} else {
+#endif
+		// otherwise leave both port permanently selected
 		HAL_GPIO_WritePin(DISPL_CS_GPIO_Port, DISPL_CS_Pin, GPIO_PIN_RESET); 	// select display
 		SET_DISPL_SPI_BAUDRATE;
+#ifndef ST7796
 		HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_RESET);	// select touch
 		SET_TOUCH_SPI_BAUDRATE;
 	}
+#endif
 	ILI9XXX_Init();
 	Displ_Orientation(orientation);
 }

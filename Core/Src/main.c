@@ -17,6 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <z_ft6336.h>
 #include "main.h"
 #include "crc.h"
 #include "dma.h"
@@ -29,7 +30,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "ft6336.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

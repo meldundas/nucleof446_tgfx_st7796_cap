@@ -1,5 +1,19 @@
-#ifndef _FT6336_H
-#define _FT6336_H
+#ifndef _Z_FT6336_H
+#define _Z_FT6336_H
+
+/*
+ *  If using TouchGFX,
+ *  you have also to add the below include:
+#include "main.h"
+ *  into STM32TouchController.cpp file
+ *  changing also sampleTouch()
+ *  as shown here:
+bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
+{
+	return ((bool) FT6336_TouchGFXSampleTouch(&x, &y));
+}
+*/
+
 
 #include <stm32f4xx_hal.h>  //change the header file for your own STM32 devices
 

@@ -58,9 +58,10 @@
 /******************    STEP 2    *****************
  * which display are you using?
  *************************************************/
-#define ILI9341
+//#define ILI9341
 //#define ILI9488_V1
 //#define ILI9488_V2
+#define ST7796
 
 
 /******************    STEP 3    ******************
@@ -114,7 +115,7 @@
 #define BKLIT_CHANNEL				TIM_CHANNEL_1	//channel used
 #define BKLIT_CCR					CCR1			//Capture-compare register used (same number as channel)
 #define BKLIT_STBY_LEVEL 			5				//Display backlight level when in stand-by (levels are CNT values)
-#define BKLIT_INIT_LEVEL 			100				//Display backlight level on startup
+#define BKLIT_INIT_LEVEL 			10				//Display backlight level on startup
 
 
 /*****************     STEP 7      *****************
@@ -180,20 +181,24 @@
 #ifdef ILI9488_V2
 #define Z_RGB565
 #endif
-
+#ifdef ST7796
+#define Z_RGB565
+#endif
 
 /***************   display size      ***************
  ***************************************************/
 #ifdef ILI9341
-//#define DISPL_WIDTH  240		// 0 orientation
-//#define DISPL_HEIGHT 320		// 0 orientation
-//#endif
-//#ifdef ILI9488
+#define DISPL_WIDTH  240		// 0 orientation
+#define DISPL_HEIGHT 320		// 0 orientation
+#endif
+#ifdef ILI9488
 #define DISPL_WIDTH  320		// 0 orientation
 #define DISPL_HEIGHT 480		// 0 orientation
 #endif
-
-
+#ifdef ST7796
+#define DISPL_WIDTH  320		// 0 orientation
+#define DISPL_HEIGHT 480		// 0 orientation
+#endif
 /************* from POLLING to DMA *****************
  *** below DISPL_DMA_CUTOFF data size, transfer ****
  ****** will be polling, even if DMA enabled *******
