@@ -97,7 +97,7 @@
               "Green": 255,
               "Blue": 255
             },
-            "Alpha": 24
+            "Alpha": 10
           }
         ],
         "Interactions": [

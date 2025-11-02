@@ -55,7 +55,7 @@ screenViewBase::screenViewBase() :
 
     box2.setPosition(76, 160, 265, 53);
     box2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    box2.setAlpha(24);
+    box2.setAlpha(10);
     add(box2);
 }
 
