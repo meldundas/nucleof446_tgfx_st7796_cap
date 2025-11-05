@@ -46,11 +46,29 @@ MEMORY
 {
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 128K
   FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 512K
+  SPI_FLASH (r)    : ORIGIN = 0x90000000,  LENGTH = 16M 
 }
 
 /* Sections */
 SECTIONS
 {
+  ExtFlashSection :
+  {
+	*(ExtFlashSection ExtFlashSection.*)
+	*(-gnu-linkonce.r.*)
+    . = ALIGN(0x100);
+  } >SPI_FLASH
+
+  FontFlashSection :
+  {
+	*(FontFlashSection FontFlashSection.*)
+	*(-gnu-linkonce.r.*)
+    . = ALIGN(0x100);
+  } >SPI_FLASH
+
+/* attributes for variables declaration */
+/* __attribute__((section("ExtFlashSection"))) __attribute__((aligned(4))) */
+
 
   /* The startup code into "FLASH" Rom type memory */
   .isr_vector :

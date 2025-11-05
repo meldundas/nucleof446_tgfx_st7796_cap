@@ -12,6 +12,7 @@
 #include <gui/containers/MenuElement.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/Image.hpp>
 
 class screenViewBase : public touchgfx::View<screenPresenter>
 {
@@ -58,13 +59,14 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::Box box1;
+    touchgfx::Box box3;
     touchgfx::ScrollWheel scrollWheel;
     touchgfx::DrawableListItems<MenuElement, 5> scrollWheelListItems;
     touchgfx::ButtonWithIcon buttonWithIconUp;
     touchgfx::ButtonWithIcon buttonWithIconDown;
     touchgfx::TextAreaWithOneWildcard textAreaCount;
     touchgfx::Box box2;
+    touchgfx::Image image1;
 
     /*
      * Wildcard Buffers

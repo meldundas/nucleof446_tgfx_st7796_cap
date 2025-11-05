@@ -14,9 +14,9 @@ screenViewBase::screenViewBase() :
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    box1.setPosition(0, 0, 480, 320);
-    box1.setColor(touchgfx::Color::getColorFromRGB(11, 30, 92));
-    add(box1);
+    box3.setPosition(0, 0, 480, 320);
+    box3.setColor(touchgfx::Color::getColorFromRGB(12, 55, 156));
+    add(box3);
 
     scrollWheel.setPosition(45, 78, 390, 215);
     scrollWheel.setHorizontal(false);
@@ -30,6 +30,7 @@ screenViewBase::screenViewBase() :
     scrollWheel.setDrawableSize(70, 0);
     scrollWheel.setDrawables(scrollWheelListItems, updateItemCallback);
     scrollWheel.animateToItem(0, 0);
+    scrollWheel.setVisible(false);
     add(scrollWheel);
 
     buttonWithIconUp.setXY(24, 6);
@@ -56,7 +57,12 @@ screenViewBase::screenViewBase() :
     box2.setPosition(76, 160, 265, 53);
     box2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     box2.setAlpha(10);
+    box2.setVisible(false);
     add(box2);
+
+    image1.setXY(90, 67);
+    image1.setBitmap(touchgfx::Bitmap(BITMAP_LION_ID));
+    add(image1);
 }
 
 screenViewBase::~screenViewBase()

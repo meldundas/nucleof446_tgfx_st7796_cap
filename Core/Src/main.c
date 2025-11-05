@@ -17,7 +17,6 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <z_ft6336.h>
 #include "main.h"
 #include "crc.h"
 #include "dma.h"

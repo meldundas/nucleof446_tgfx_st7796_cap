@@ -56,6 +56,7 @@
  ********* chip memory used in the project *********
  ***************************************************/
 /* active information */
+// here values for the W25Q128JV chips
 #define EXT_FLASH_PAGE_SIZE		0x0100		//256b 		page size (bits)
 #define EXT_FLASH_SECTOR_SIZE	0x1000		//4kB 		sector size (bytes)
 #define EXT_FLASH_BLOCK_SIZE	0x00010000	//64kB 		block size (bytes)

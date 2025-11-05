@@ -32,7 +32,7 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "z_displ_ILI9XXX.h"
-//#include "z_touch_XPT2046.h"
+#include "z_touch_XPT2046.h"
 #include "z_ft6336.h"
 #include "z_flash_W25QXXX.h"
 /* USER CODE END Includes */

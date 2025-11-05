@@ -6,13 +6,13 @@
         "Components": [
           {
             "Type": "Box",
-            "Name": "box1",
+            "Name": "box3",
             "Width": 480,
             "Height": 320,
             "Color": {
-              "Red": 11,
-              "Green": 30,
-              "Blue": 92
+              "Red": 12,
+              "Green": 55,
+              "Blue": 156
             }
           },
           {
@@ -22,6 +22,7 @@
             "Y": 78,
             "Width": 390,
             "Height": 215,
+            "Visible": false,
             "SelectedItemOffset": 5,
             "IsCircular": true,
             "ItemTemplateName": "MenuElement",
@@ -92,12 +93,22 @@
             "Y": 160,
             "Width": 265,
             "Height": 53,
+            "Visible": false,
             "Color": {
               "Red": 255,
               "Green": 255,
               "Blue": 255
             },
             "Alpha": 10
+          },
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": 90,
+            "Y": 67,
+            "Width": 300,
+            "Height": 335,
+            "RelativeFilename": "lion.png"
           }
         ],
         "Interactions": [
