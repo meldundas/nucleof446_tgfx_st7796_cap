@@ -33,6 +33,8 @@ public:
 
         void decrementCount();
 
+        void slideChange(int newVal);
+
     
 
     private:

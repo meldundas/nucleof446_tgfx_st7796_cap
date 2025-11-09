@@ -46,7 +46,12 @@ bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
      * By default sampleTouch is called every tick, this can be adjusted by HAL::setTouchSampleRate(int8_t);
      *
      */
-    return ((bool) FT6336_TouchGFXSampleTouch(&x, &y));
+
+#ifdef ST7796
+	return ((bool) FT6336_TouchGFXSampleTouch(&x, &y));
+#else
+	return ((bool) Touch_TouchGFXSampleTouch(&x, &y));
+#endif
 }
 
 /* USER CODE END STM32TouchController */

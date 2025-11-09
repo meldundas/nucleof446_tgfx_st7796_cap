@@ -75,6 +75,8 @@ void Error_Handler(void);
 #define USART_RX_GPIO_Port GPIOA
 #define DISP_SCK_Pin GPIO_PIN_5
 #define DISP_SCK_GPIO_Port GPIOA
+#define TOUCH_MISO_Pin GPIO_PIN_6
+#define TOUCH_MISO_GPIO_Port GPIOA
 #define DISPL_MOSI_Pin GPIO_PIN_7
 #define DISPL_MOSI_GPIO_Port GPIOA
 #define DISPL_DC_Pin GPIO_PIN_5

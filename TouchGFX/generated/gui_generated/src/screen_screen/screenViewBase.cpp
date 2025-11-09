@@ -8,15 +8,16 @@
 
 screenViewBase::screenViewBase() :
     updateItemCallback(this, &screenViewBase::updateItemCallbackHandler),
-    buttonCallback(this, &screenViewBase::buttonCallbackHandler)
+    buttonCallback(this, &screenViewBase::buttonCallbackHandler),
+    progressIndicatorValueUpdatedCallback(this, &screenViewBase::progressIndicatorValueUpdatedCallbackHandler)
 {
     __background.setPosition(0, 0, 480, 320);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    box3.setPosition(0, 0, 480, 320);
-    box3.setColor(touchgfx::Color::getColorFromRGB(12, 55, 156));
-    add(box3);
+    shiphall2.setXY(0, 0);
+    shiphall2.setBitmap(touchgfx::Bitmap(BITMAP_SHIPHALL2_ID));
+    add(shiphall2);
 
     scrollWheel.setPosition(45, 78, 390, 215);
     scrollWheel.setHorizontal(false);
@@ -33,7 +34,7 @@ screenViewBase::screenViewBase() :
     scrollWheel.setVisible(false);
     add(scrollWheel);
 
-    buttonWithIconUp.setXY(24, 6);
+    buttonWithIconUp.setXY(26, 6);
     buttonWithIconUp.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_TINY_ROUND_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_ARROW_CIRCLE_UP_50_50_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_NAVIGATION_ARROW_UPWARD_50_50_E8F6FB_SVG_ID));
     buttonWithIconUp.setIconXY(30, 0);
     buttonWithIconUp.setAction(buttonCallback);
@@ -45,7 +46,7 @@ screenViewBase::screenViewBase() :
     buttonWithIconDown.setAction(buttonCallback);
     add(buttonWithIconDown);
 
-    textAreaCount.setXY(203, 6);
+    textAreaCount.setXY(215, 11);
     textAreaCount.setColor(touchgfx::Color::getColorFromRGB(237, 230, 230));
     textAreaCount.setLinespacing(0);
     Unicode::snprintf(textAreaCountBuffer, TEXTAREACOUNT_SIZE, "%s", touchgfx::TypedText(T_COUNTER).getText());
@@ -54,15 +55,68 @@ screenViewBase::screenViewBase() :
     textAreaCount.setTypedText(touchgfx::TypedText(T___SINGLEUSE_IMD0));
     add(textAreaCount);
 
-    box2.setPosition(76, 160, 265, 53);
-    box2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    box2.setAlpha(10);
-    box2.setVisible(false);
-    add(box2);
+    slider.setXY(439, 56);
+    slider.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_SLIDER_VERTICAL_THIN_TRACK_SMALL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_SLIDER_VERTICAL_THIN_FILLER_SMALL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_SLIDER_VERTICAL_THIN_ROUND_LIGHT_ID));
+    slider.setupVerticalSlider(9, 12, 0, 0, 200);
+    slider.setValueRange(0, 100);
+    slider.setValue(0);
+    add(slider);
 
-    image1.setXY(90, 67);
-    image1.setBitmap(touchgfx::Bitmap(BITMAP_LION_ID));
-    add(image1);
+    imageProgress.setXY(100, 255);
+    imageProgress.setProgressIndicatorPosition(17, 16, 300, 18);
+    imageProgress.setRange(0, 100);
+    imageProgress.setDirection(touchgfx::AbstractDirectionProgress::RIGHT);
+    imageProgress.setBackground(touchgfx::Bitmap(BITMAP_HOR_THERM_BG_ID));
+    imageProgress.setBitmap(BITMAP_HOR_THERM_PROGRESS_ID);
+    imageProgress.setValue(60);
+    imageProgress.setAnchorAtZero(true);
+    imageProgress.setValueSetAction(progressIndicatorValueUpdatedCallback);
+    add(imageProgress);
+
+    textArea1.setXY(120, 227);
+    textArea1.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
+    textArea1.setLinespacing(0);
+    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CF72));
+    add(textArea1);
+
+    textArea1_1.setXY(341, 227);
+    textArea1_1.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
+    textArea1_1.setLinespacing(0);
+    textArea1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_B5MP));
+    add(textArea1_1);
+
+    textArea2.setXY(231, 227);
+    textArea2.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
+    textArea2.setLinespacing(0);
+    Unicode::snprintf(textArea2Buffer, TEXTAREA2_SIZE, "%s", touchgfx::TypedText(T_SLIDERVALUE).getText());
+    textArea2.setWildcard(textArea2Buffer);
+    textArea2.resizeToCurrentText();
+    textArea2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_PSD6));
+    add(textArea2);
+
+    textTemperature.setXY(33, 99);
+    textTemperature.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
+    textTemperature.setLinespacing(0);
+    Unicode::snprintf(textTemperatureBuffer, TEXTTEMPERATURE_SIZE, "%s", touchgfx::TypedText(T_TEMPERATURE).getText());
+    textTemperature.setWildcard(textTemperatureBuffer);
+    textTemperature.resizeToCurrentText();
+    textTemperature.setTypedText(touchgfx::TypedText(T___SINGLEUSE_SQQY));
+    add(textTemperature);
+
+    textHumidity.setXY(33, 145);
+    textHumidity.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
+    textHumidity.setLinespacing(0);
+    Unicode::snprintf(textHumidityBuffer, TEXTHUMIDITY_SIZE, "%s", touchgfx::TypedText(T_HUMIDITY).getText());
+    textHumidity.setWildcard(textHumidityBuffer);
+    textHumidity.resizeToCurrentText();
+    textHumidity.setTypedText(touchgfx::TypedText(T___SINGLEUSE_G84W));
+    add(textHumidity);
+
+    textArea3.setXY(70, 150);
+    textArea3.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
+    textArea3.setLinespacing(0);
+    textArea3.setTypedText(touchgfx::TypedText(T___SINGLEUSE_7NPE));
+    add(textArea3);
 }
 
 screenViewBase::~screenViewBase()
@@ -94,6 +148,17 @@ void screenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
         //When buttonWithIconDown clicked execute C++ code
         //Execute C++ code
         presenter->decrementCount();
+    }
+}
+
+void screenViewBase::progressIndicatorValueUpdatedCallbackHandler(const touchgfx::AbstractProgressIndicator& src)
+{
+    if (&src == &imageProgress)
+    {
+        //InteractionImageProgress
+        //When imageProgress progress indicator value updated move imageProgress
+        //Set position x:0 and y:0 on imageProgress
+        imageProgress.moveTo(0,0);
     }
 }
 

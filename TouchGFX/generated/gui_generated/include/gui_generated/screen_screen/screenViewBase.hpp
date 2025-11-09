@@ -8,11 +8,16 @@
 #include <mvp/View.hpp>
 #include <gui/screen_screen/screenPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/containers/scrollers/ScrollWheel.hpp>
 #include <gui/containers/MenuElement.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/containers/Slider.hpp>
+#include <touchgfx/containers/progress_indicators/ImageProgress.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/EasingEquations.hpp>
+#include <touchgfx/mixins/MoveAnimator.hpp>
 
 class screenViewBase : public touchgfx::View<screenPresenter>
 {
@@ -59,20 +64,32 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::Box box3;
+    touchgfx::Image shiphall2;
     touchgfx::ScrollWheel scrollWheel;
     touchgfx::DrawableListItems<MenuElement, 5> scrollWheelListItems;
     touchgfx::ButtonWithIcon buttonWithIconUp;
     touchgfx::ButtonWithIcon buttonWithIconDown;
     touchgfx::TextAreaWithOneWildcard textAreaCount;
-    touchgfx::Box box2;
-    touchgfx::Image image1;
+    touchgfx::Slider slider;
+    touchgfx::ImageProgress imageProgress;
+    touchgfx::TextArea textArea1;
+    touchgfx::TextArea textArea1_1;
+    touchgfx::TextAreaWithOneWildcard textArea2;
+    touchgfx::TextAreaWithOneWildcard textTemperature;
+    touchgfx::TextAreaWithOneWildcard textHumidity;
+    touchgfx::TextArea textArea3;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREACOUNT_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaCountBuffer[TEXTAREACOUNT_SIZE];
+    static const uint16_t TEXTAREA2_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar textArea2Buffer[TEXTAREA2_SIZE];
+    static const uint16_t TEXTTEMPERATURE_SIZE = 8;
+    touchgfx::Unicode::UnicodeChar textTemperatureBuffer[TEXTTEMPERATURE_SIZE];
+    static const uint16_t TEXTHUMIDITY_SIZE = 6;
+    touchgfx::Unicode::UnicodeChar textHumidityBuffer[TEXTHUMIDITY_SIZE];
 
 private:
 
@@ -81,12 +98,14 @@ private:
      */
     touchgfx::Callback<screenViewBase, touchgfx::DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
     touchgfx::Callback<screenViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<screenViewBase, const touchgfx::AbstractProgressIndicator&> progressIndicatorValueUpdatedCallback;
 
     /*
      * Callback Handler Declarations
      */
     void updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void progressIndicatorValueUpdatedCallbackHandler(const touchgfx::AbstractProgressIndicator& src);
 
 };
 

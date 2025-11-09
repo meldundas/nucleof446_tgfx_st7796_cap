@@ -103,7 +103,11 @@ int main(void)
   MX_I2C1_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-  Displ_Init(Displ_Orientat_90);			// initialize display controller - set orientation parameter as per TouchGFX setup
+#ifndef ST7796
+  Displ_Init(Displ_Orientat_270);			// initialize display controller - set orientation parameter as per TouchGFX setup
+#else
+  Displ_Init(Displ_Orientat_90);
+#endif
   Displ_BackLight('I');  					// initialize backlight
   HAL_TIM_Base_Start_IT(&TGFX_T);			// start TouchGFX tick timer
   /* USER CODE END 2 */

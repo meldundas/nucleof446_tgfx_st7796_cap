@@ -114,8 +114,8 @@
 #define BKLIT_T 					htim3			//timer used
 #define BKLIT_CHANNEL				TIM_CHANNEL_1	//channel used
 #define BKLIT_CCR					CCR1			//Capture-compare register used (same number as channel)
-#define BKLIT_STBY_LEVEL 			5				//Display backlight level when in stand-by (levels are CNT values)
-#define BKLIT_INIT_LEVEL 			10				//Display backlight level on startup
+#define BKLIT_STBY_LEVEL 			50				//Display backlight level when in stand-by (levels are CNT values)
+#define BKLIT_INIT_LEVEL 			99				//Display backlight level on startup
 
 
 /*****************     STEP 7      *****************

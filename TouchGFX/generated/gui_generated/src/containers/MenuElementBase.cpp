@@ -13,7 +13,7 @@ MenuElementBase::MenuElementBase()
     text.setXY(93, 23);
     text.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     text.setLinespacing(0);
-    Unicode::snprintf(textBuffer, TEXT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_0DIP).getText());
+    textBuffer[0] = 0;
     text.setWildcard(textBuffer);
     text.resizeToCurrentText();
     text.setTypedText(touchgfx::TypedText(T___SINGLEUSE_TFNS));

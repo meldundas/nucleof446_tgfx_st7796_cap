@@ -20,7 +20,11 @@
  *  as shown here:
 bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
 {
+// SPI XPT2046
 	return ((bool) Touch_TouchGFXSampleTouch(&x, &y));
+
+//	I2C FT6336
+	return ((bool) FT6336_TouchGFXSampleTouch(&x, &y));
 }
  *
  *  see also z_displ_ili9XXX.h
@@ -110,11 +114,16 @@ bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
 #endif
 
 #ifdef ILI9488_V1
-#define T_ROTATION_270
-#define AX 0.016f
-#define BX -20.0f
-#define AY 0.011f
-#define BY -15.0f
+//#define T_ROTATION_270
+//#define AX 0.016f
+//#define BX -20.0f
+//#define AY 0.011f
+//#define BY -15.0f
+#define T_ROTATION_0
+#define AX -0.010488
+#define BX 328.695374
+#define AY 0.015784
+#define BY -21.072773
 #endif
 
 #ifdef ILI9488_V2

@@ -8,6 +8,9 @@ screenView::screenView()
 void screenView::setupScreen()
 {
     screenViewBase::setupScreen();
+    counter = 0;
+    slider.setValue(counter);
+    setCount(counter);
 }
 
 void screenView::tearDownScreen()
@@ -15,20 +18,39 @@ void screenView::tearDownScreen()
     screenViewBase::tearDownScreen();
 }
 
+void screenView::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithIconUp)
+    {
+        buttonClickUp();
+    }
+    else if (&src == &buttonWithIconDown)
+    {
+        buttonClickDown();
+    }
+}
+
+void screenView::sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value)
+{
+    if (&src == &slider)
+    {
+        sliderValueChanged(value);
+    }
+}
+
 void screenView::setCount(int count)
 {
-    Unicode::snprintf(textAreaCountBuffer, TEXTAREACOUNT_SIZE, "%03d", count);
+    Unicode::snprintf(textAreaCountBuffer, TEXTAREACOUNT_SIZE, "%02d", count);
     textAreaCount.invalidate();
 }
 
-void screenView::changeCount(char op)
+void screenView::sliderValueChanged(int value)
 {
-    if (op == '+')
+    if (counter != value)
     {
-        presenter->incrementCount();
-    }
-    else if (op == '-')
-    {
-        presenter->decrementCount();
+        counter = value;
+        setCount(counter);
     }
 }
+
+

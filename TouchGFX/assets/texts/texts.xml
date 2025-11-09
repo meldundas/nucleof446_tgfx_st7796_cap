@@ -6,14 +6,38 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_0DIP" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">00</Translation>
+      <Text Id="__SingleUse_7NPE" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">%</Translation>
+      </Text>
+      <Text Id="humidity" Alignment="Left" TypographyId="SevenSeg30">
+        <Translation Language="GB">46</Translation>
+      </Text>
+      <Text Id="__SingleUse_G84W" Alignment="Left" TypographyId="SevenSeg30">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="temperature" Alignment="Left" TypographyId="SevenSeg30">
+        <Translation Language="GB">22.5</Translation>
+      </Text>
+      <Text Id="__SingleUse_SQQY" Alignment="Left" TypographyId="SevenSeg30">
+        <Translation Language="GB">&lt;value&gt;°</Translation>
+      </Text>
+      <Text Id="sliderValue" Alignment="Left" TypographyId="Orbitron">
+        <Translation Language="GB">60</Translation>
+      </Text>
+      <Text Id="__SingleUse_PSD6" Alignment="Left" TypographyId="SevenSeg">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_B5MP" Alignment="Left" TypographyId="SevenSeg">
+        <Translation Language="GB">100</Translation>
+      </Text>
+      <Text Id="__SingleUse_CF72" Alignment="Left" TypographyId="SevenSeg">
+        <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_TFNS" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">Menu Element &lt;value&gt;</Translation>
       </Text>
       <Text Id="Counter" Alignment="Left" TypographyId="Large">
-        <Translation Language="GB">000</Translation>
+        <Translation Language="GB">00</Translation>
       </Text>
       <Text Id="__SingleUse_IMD0" Alignment="Left" TypographyId="Large">
         <Translation Language="GB">&lt;value&gt;</Translation>
@@ -24,5 +48,8 @@
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0x7a" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0x7a" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Orbitron" Font="Orbitron-Regular.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0x7a" />
+    <Typography Id="SevenSeg" Font="SevenSegment.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x30-0x39" />
+    <Typography Id="SevenSeg30" Font="SevenSegment.ttf" Size="30" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
   </Typographies>
 </TextDatabase>

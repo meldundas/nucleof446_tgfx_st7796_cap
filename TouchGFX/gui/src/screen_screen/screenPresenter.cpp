@@ -21,7 +21,7 @@ void screenPresenter::incrementCount()
 {
     int count = model->getCount();
     count++;
-    if (count > 999)
+    if (count > 99)
     {
         count = 0;
     }
@@ -35,8 +35,18 @@ void screenPresenter::decrementCount()
     count--;
     if (count < 0)
     {
-        count = 999;
+        count = 99;
     }
     model->setCount(count);
     view.setCount(count);
+
+
+
+}
+
+
+void screenPresenter::slideChange(int newVal)
+{
+	view.setCount(newVal);
+	model->setCount(newVal);
 }

@@ -13,14 +13,24 @@ public:
     virtual void tearDownScreen();
 
     void setCount(int count);
-    void changeCount(char op);
+
 
     virtual void scrollWheelUpdateItem(MenuElement& item, int16_t itemIndex)
     {
         item.setNumber(itemIndex);
     }
 
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
+
+
+    void buttonClickUp();
+    void buttonClickDown();
+    void sliderValueChanged(int value);
+
+
 protected:
+    int counter;
 };
 
 #endif // SCREENVIEW_HPP
