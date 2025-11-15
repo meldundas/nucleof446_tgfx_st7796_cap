@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "crc.h"
+#include "dac.h"
 #include "dma.h"
 #include "i2c.h"
 #include "spi.h"
@@ -29,6 +30,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,6 +103,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_SPI2_Init();
   MX_I2C1_Init();
+  MX_DAC_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 #ifndef ST7796
@@ -178,7 +181,11 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+int __io_putchar(int ch)
+{
+	ITM_SendChar(ch);
+	return 0;
+}
 /* USER CODE END 4 */
 
 /**

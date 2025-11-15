@@ -16,7 +16,6 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     18, // T_TEMPERATURE: "22.5"
     15, // T___SINGLEUSE_SQQY: "<>?"
     30, // T_SLIDERVALUE: "60"
-    13, // T___SINGLEUSE_PSD6: "<>"
     23, // T___SINGLEUSE_B5MP: "100"
     25, // T___SINGLEUSE_CF72: "0"
     0,  // T___SINGLEUSE_TFNS: "Menu Element <>"

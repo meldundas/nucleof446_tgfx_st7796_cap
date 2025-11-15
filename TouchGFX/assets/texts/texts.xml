@@ -24,9 +24,6 @@
       <Text Id="sliderValue" Alignment="Left" TypographyId="Orbitron">
         <Translation Language="GB">60</Translation>
       </Text>
-      <Text Id="__SingleUse_PSD6" Alignment="Left" TypographyId="SevenSeg">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
       <Text Id="__SingleUse_B5MP" Alignment="Left" TypographyId="SevenSeg">
         <Translation Language="GB">100</Translation>
       </Text>

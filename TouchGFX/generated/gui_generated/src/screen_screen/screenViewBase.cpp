@@ -85,15 +85,6 @@ screenViewBase::screenViewBase() :
     textArea1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_B5MP));
     add(textArea1_1);
 
-    textArea2.setXY(231, 227);
-    textArea2.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
-    textArea2.setLinespacing(0);
-    Unicode::snprintf(textArea2Buffer, TEXTAREA2_SIZE, "%s", touchgfx::TypedText(T_SLIDERVALUE).getText());
-    textArea2.setWildcard(textArea2Buffer);
-    textArea2.resizeToCurrentText();
-    textArea2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_PSD6));
-    add(textArea2);
-
     textTemperature.setXY(33, 99);
     textTemperature.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
     textTemperature.setLinespacing(0);
@@ -103,7 +94,7 @@ screenViewBase::screenViewBase() :
     textTemperature.setTypedText(touchgfx::TypedText(T___SINGLEUSE_SQQY));
     add(textTemperature);
 
-    textHumidity.setXY(33, 145);
+    textHumidity.setXY(223, 216);
     textHumidity.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
     textHumidity.setLinespacing(0);
     Unicode::snprintf(textHumidityBuffer, TEXTHUMIDITY_SIZE, "%s", touchgfx::TypedText(T_HUMIDITY).getText());
@@ -112,7 +103,7 @@ screenViewBase::screenViewBase() :
     textHumidity.setTypedText(touchgfx::TypedText(T___SINGLEUSE_G84W));
     add(textHumidity);
 
-    textArea3.setXY(70, 150);
+    textArea3.setXY(254, 221);
     textArea3.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
     textArea3.setLinespacing(0);
     textArea3.setTypedText(touchgfx::TypedText(T___SINGLEUSE_7NPE));

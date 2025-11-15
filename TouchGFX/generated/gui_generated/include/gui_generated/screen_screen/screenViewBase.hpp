@@ -74,7 +74,6 @@ protected:
     touchgfx::ImageProgress imageProgress;
     touchgfx::TextArea textArea1;
     touchgfx::TextArea textArea1_1;
-    touchgfx::TextAreaWithOneWildcard textArea2;
     touchgfx::TextAreaWithOneWildcard textTemperature;
     touchgfx::TextAreaWithOneWildcard textHumidity;
     touchgfx::TextArea textArea3;
@@ -84,8 +83,6 @@ protected:
      */
     static const uint16_t TEXTAREACOUNT_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaCountBuffer[TEXTAREACOUNT_SIZE];
-    static const uint16_t TEXTAREA2_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar textArea2Buffer[TEXTAREA2_SIZE];
     static const uint16_t TEXTTEMPERATURE_SIZE = 8;
     touchgfx::Unicode::UnicodeChar textTemperatureBuffer[TEXTTEMPERATURE_SIZE];
     static const uint16_t TEXTHUMIDITY_SIZE = 6;
