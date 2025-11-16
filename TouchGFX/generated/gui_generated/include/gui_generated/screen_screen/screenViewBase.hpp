@@ -16,8 +16,6 @@
 #include <touchgfx/containers/Slider.hpp>
 #include <touchgfx/containers/progress_indicators/ImageProgress.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/EasingEquations.hpp>
-#include <touchgfx/mixins/MoveAnimator.hpp>
 
 class screenViewBase : public touchgfx::View<screenPresenter>
 {
@@ -95,14 +93,12 @@ private:
      */
     touchgfx::Callback<screenViewBase, touchgfx::DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
     touchgfx::Callback<screenViewBase, const touchgfx::AbstractButton&> buttonCallback;
-    touchgfx::Callback<screenViewBase, const touchgfx::AbstractProgressIndicator&> progressIndicatorValueUpdatedCallback;
 
     /*
      * Callback Handler Declarations
      */
     void updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
-    void progressIndicatorValueUpdatedCallbackHandler(const touchgfx::AbstractProgressIndicator& src);
 
 };
 

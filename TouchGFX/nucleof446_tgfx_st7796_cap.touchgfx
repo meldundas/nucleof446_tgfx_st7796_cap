@@ -105,13 +105,14 @@
             "Y": 255,
             "Width": 280,
             "Height": 65,
+            "LockPosition": true,
             "FileNameProgress": "hor_therm_progress.png",
             "AnchorAtZero": true,
             "Direction": "Right",
             "FileNameBackground": "hor_therm_bg.png",
             "IndicatorPositionX": 17,
             "IndicatorPositionY": 16,
-            "IndicatorPositionWidth": 300,
+            "IndicatorPositionWidth": 280,
             "IndicatorPositionHeight": 18,
             "ProgressRangeMax": 100,
             "ProgressInitialValue": 60
@@ -239,19 +240,6 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "presenter->slideChange(value);"
-            }
-          },
-          {
-            "InteractionName": "InteractionImageProgress",
-            "Trigger": {
-              "Type": "TriggerProgressIndicatorValueUpdated",
-              "TriggerComponent": "imageProgress"
-            },
-            "Action": {
-              "Type": "ActionMove",
-              "Easing": "Linear",
-              "EasingOption": "In",
-              "ActionComponent": "imageProgress"
             }
           }
         ],

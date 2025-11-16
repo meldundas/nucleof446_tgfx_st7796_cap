@@ -8,8 +8,7 @@
 
 screenViewBase::screenViewBase() :
     updateItemCallback(this, &screenViewBase::updateItemCallbackHandler),
-    buttonCallback(this, &screenViewBase::buttonCallbackHandler),
-    progressIndicatorValueUpdatedCallback(this, &screenViewBase::progressIndicatorValueUpdatedCallbackHandler)
+    buttonCallback(this, &screenViewBase::buttonCallbackHandler)
 {
     __background.setPosition(0, 0, 480, 320);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -63,14 +62,13 @@ screenViewBase::screenViewBase() :
     add(slider);
 
     imageProgress.setXY(100, 255);
-    imageProgress.setProgressIndicatorPosition(17, 16, 300, 18);
+    imageProgress.setProgressIndicatorPosition(17, 16, 280, 18);
     imageProgress.setRange(0, 100);
     imageProgress.setDirection(touchgfx::AbstractDirectionProgress::RIGHT);
     imageProgress.setBackground(touchgfx::Bitmap(BITMAP_HOR_THERM_BG_ID));
     imageProgress.setBitmap(BITMAP_HOR_THERM_PROGRESS_ID);
     imageProgress.setValue(60);
     imageProgress.setAnchorAtZero(true);
-    imageProgress.setValueSetAction(progressIndicatorValueUpdatedCallback);
     add(imageProgress);
 
     textArea1.setXY(120, 227);
@@ -139,17 +137,6 @@ void screenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
         //When buttonWithIconDown clicked execute C++ code
         //Execute C++ code
         presenter->decrementCount();
-    }
-}
-
-void screenViewBase::progressIndicatorValueUpdatedCallbackHandler(const touchgfx::AbstractProgressIndicator& src)
-{
-    if (&src == &imageProgress)
-    {
-        //InteractionImageProgress
-        //When imageProgress progress indicator value updated move imageProgress
-        //Set position x:0 and y:0 on imageProgress
-        imageProgress.moveTo(0,0);
     }
 }
 
