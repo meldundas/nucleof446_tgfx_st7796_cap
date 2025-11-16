@@ -196,6 +196,9 @@
     <Filter Include="Source Files\generated\gui_generated\containers">
       <UniqueIdentifier>21DFBA55-D25E-173B-2EE5-12B64967F138</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\gui\gui">
+      <UniqueIdentifier>62E1A2A9-59A5-33FA-72B7-2902CD088681</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -245,6 +248,9 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\dht_interface.cpp">
       <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\gui\dht_touchgfx_interface.cpp">
+      <Filter>Source Files\gui\gui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -705,6 +711,9 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\dht_interface.h">
       <Filter>Source Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\dht_touchgfx_interface.hpp">
+      <Filter>Header Files\gui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

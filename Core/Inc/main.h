@@ -79,6 +79,8 @@ void Error_Handler(void);
 #define TOUCH_MISO_GPIO_Port GPIOA
 #define DISPL_MOSI_Pin GPIO_PIN_7
 #define DISPL_MOSI_GPIO_Port GPIOA
+#define DHT11_Pin GPIO_PIN_4
+#define DHT11_GPIO_Port GPIOC
 #define DISPL_DC_Pin GPIO_PIN_5
 #define DISPL_DC_GPIO_Port GPIOC
 #define FLASH_SCK_Pin GPIO_PIN_10

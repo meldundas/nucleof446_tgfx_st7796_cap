@@ -4,22 +4,36 @@
 
 FONT_TABLE_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::GlyphNode glyphs_SevenSegment_30_4bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
-    {     0, 0x002E,   2,   3,   2,  -1,   0,   0,   1, 0x00 },
-    {     3, 0x0032,  14,  22,  22,   1,  14,   0,   0, 0x00 },
-    {   157, 0x0034,  13,  23,  23,   2,  14,   0,   0, 0x00 },
-    {   318, 0x0035,  12,  22,  22,   2,  14,   0,   0, 0x00 },
-    {   450, 0x0036,  13,  22,  22,   1,  14,   0,   0, 0x00 },
-    {   604, 0x003F,  13,  22,  22,   1,  14,   0,   0, 0x00 },
-    {   758, 0x00B0,  13,  13,  23,   2,  14,   0,   0, 0x00 }
+    {     0, 0x0027,   4,  10,  21,   2,  14,   0,   0, 0x00 },
+    {    20, 0x002E,   2,   3,   2,  -1,   0,   0,   1, 0x00 },
+    {    23, 0x0030,  14,  22,  22,   1,  14,   0,   0, 0x00 },
+    {   177, 0x0031,   5,  22,  22,  10,  14,   0,   0, 0x00 },
+    {   243, 0x0032,  14,  22,  22,   1,  14,   0,   0, 0x00 },
+    {   397, 0x0033,  13,  22,  22,   2,  14,   0,   0, 0x00 },
+    {   551, 0x0034,  13,  23,  23,   2,  14,   0,   0, 0x00 },
+    {   712, 0x0035,  12,  22,  22,   2,  14,   0,   0, 0x00 },
+    {   844, 0x0036,  13,  22,  22,   1,  14,   0,   0, 0x00 },
+    {   998, 0x0037,  12,  22,  22,   3,  14,   0,   0, 0x00 },
+    {  1130, 0x0038,  14,  22,  22,   1,  14,   0,   0, 0x00 },
+    {  1284, 0x0039,  13,  22,  22,   2,  14,   0,   0, 0x00 },
+    {  1438, 0x003F,  13,  22,  22,   1,  14,   0,   0, 0x00 },
+    {  1592, 0x00B0,  13,  13,  23,   2,  14,   0,   0, 0x00 }
 };
 
 FONT_SEARCHTABLE_LOCATION_FLASH_PRAGMA
 KEEP extern const uint16_t unicodelist_SevenSegment_30_4bpp[] FONT_SEARCHTABLE_LOCATION_FLASH_ATTRIBUTE = {
+    0x0027,
     0x002E,
+    0x0030,
+    0x0031,
     0x0032,
+    0x0033,
     0x0034,
     0x0035,
     0x0036,
+    0x0037,
+    0x0038,
+    0x0039,
     0x003F,
     0x00B0
 };
@@ -39,6 +53,6 @@ touchgfx::UnmappedDataFont& getFont_SevenSegment_30_4bpp();
 
 touchgfx::UnmappedDataFont& getFont_SevenSegment_30_4bpp()
 {
-    static touchgfx::UnmappedDataFont SevenSegment_30_4bpp(glyphs_SevenSegment_30_4bpp, unicodelist_SevenSegment_30_4bpp, 7, 31, 30, 0, 0, 4, 1, 1, 1, unicodes_SevenSegment_30_4bpp, kerning_SevenSegment_30_4bpp, 63, 0, 0, 0);
+    static touchgfx::UnmappedDataFont SevenSegment_30_4bpp(glyphs_SevenSegment_30_4bpp, unicodelist_SevenSegment_30_4bpp, 14, 31, 30, 0, 0, 4, 1, 1, 1, unicodes_SevenSegment_30_4bpp, kerning_SevenSegment_30_4bpp, 63, 0, 0, 0);
     return SevenSegment_30_4bpp;
 }

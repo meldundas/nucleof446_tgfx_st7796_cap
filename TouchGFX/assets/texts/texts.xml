@@ -47,6 +47,6 @@
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Orbitron" Font="Orbitron-Regular.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0x7a" />
     <Typography Id="SevenSeg" Font="SevenSegment.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x30-0x39" />
-    <Typography Id="SevenSeg30" Font="SevenSegment.ttf" Size="30" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="SevenSeg30" Font="SevenSegment.ttf" Size="30" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="'.'" WildcardCharacterRanges="0x30-0x39" />
   </Typographies>
 </TextDatabase>
