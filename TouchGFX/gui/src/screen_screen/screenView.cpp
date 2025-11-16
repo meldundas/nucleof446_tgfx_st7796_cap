@@ -1,4 +1,5 @@
 #include <gui/screen_screen/screenView.hpp>
+#include <stdio.h>
 
 screenView::screenView()
 {
@@ -51,6 +52,19 @@ void screenView::sliderValueChanged(int value)
         counter = value;
         setCount(counter);
     }
+}
+
+void screenView::setDht(DHT11_Data_TypeDef *dhtVal)
+{
+        //char buf[8];
+        //sprintf(buf, "0.1f", dhtVal->temperature);
+
+        //Unicode::strncpy(textTemperatureBuffer, buf, TEXTTEMPERATURE_SIZE);
+        Unicode::snprintfFloat(textTemperatureBuffer, TEXTTEMPERATURE_SIZE, "%0.1f", dhtVal->temperature);
+        Unicode::snprintf(textHumidityBuffer, TEXTHUMIDITY_SIZE, "%d", dhtVal->humidity);
+
+        textTemperature.invalidate();
+        textHumidity.invalidate();
 }
 
 

@@ -33,11 +33,15 @@ public:
 
         void decrementCount();
 
-        void slideChange(int newVal);
+                void slideChange(int newVal);
 
-    
+        
 
-    private:
+                void newDHTValue(DHT11_Data_TypeDef *dhtVal);
+
+            
+
+            private:
     screenPresenter();
 
     screenView& view;

@@ -28,6 +28,8 @@ public:
     void buttonClickDown();
     void sliderValueChanged(int value);
 
+    void setDht(DHT11_Data_TypeDef *dhtVal);
+
 
 protected:
     int counter;

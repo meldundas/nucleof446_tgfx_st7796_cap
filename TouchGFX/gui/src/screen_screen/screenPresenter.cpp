@@ -50,3 +50,10 @@ void screenPresenter::slideChange(int newVal)
 	view.setCount(newVal);
 	model->setCount(newVal);
 }
+
+
+void screenPresenter::newDHTValue(DHT11_Data_TypeDef *dhtVal)
+{
+       view.setDht(dhtVal);
+
+}
