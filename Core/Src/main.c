@@ -31,10 +31,12 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include "dht11.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+DHT11_Data_TypeDef dht11_data;
 
 /* USER CODE END PTD */
 
@@ -106,6 +108,7 @@ int main(void)
   MX_DAC_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
+  DHT11_Init();
 #ifndef ST7796
   Displ_Init(Displ_Orientat_270);			// initialize display controller - set orientation parameter as per TouchGFX setup
 #else
@@ -123,6 +126,12 @@ int main(void)
 
   MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
+  static uint32_t last_dht11_read_tick = 0;
+  if (HAL_GetTick() - last_dht11_read_tick >= 1000)
+  {
+      DHT11_ReadData(&dht11_data);
+      last_dht11_read_tick = HAL_GetTick();
+  }
   }
   /* USER CODE END 3 */
 }
