@@ -64,6 +64,8 @@ void screenView::setDht(DHT11_Data_TypeDef *dhtVal)
 
         imageProgress.setValue(dhtVal->humidity * 0.88); //244pixels / 280 pixels
         imageProgress.invalidate();
+
+         //.setColor(colorPicker1.getRgbColor());
 }
 
 

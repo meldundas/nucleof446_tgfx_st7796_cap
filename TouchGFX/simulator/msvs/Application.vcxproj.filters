@@ -252,6 +252,12 @@
     <ClCompile Include="..\..\gui\src\gui\dht_touchgfx_interface.cpp">
       <Filter>Source Files\gui\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\ColorPicker.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\ColorPickerBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml">
@@ -714,6 +720,12 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\dht_touchgfx_interface.hpp">
       <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\ColorPicker.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ColorPickerBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

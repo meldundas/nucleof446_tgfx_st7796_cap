@@ -3,6 +3,7 @@
     "Screens": [
       {
         "Name": "screen",
+        "CanvasBufferSize": 7200,
         "Components": [
           {
             "Type": "Image",
@@ -206,6 +207,14 @@
               "Blue": 7
             },
             "AutoSize": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "colorPicker1",
+            "X": 104,
+            "Width": 272,
+            "Height": 272,
+            "CustomContainerDefinitionName": "ColorPicker"
           }
         ],
         "Interactions": [
@@ -270,8 +279,8 @@
             "Name": "text",
             "X": 93,
             "Y": 23,
-            "Width": 177,
-            "Height": 24,
+            "Width": 151,
+            "Height": 20,
             "TextId": "__SingleUse_TFNS",
             "TextRotation": "0",
             "Color": {
@@ -293,6 +302,50 @@
             "Width": 36,
             "Height": 36,
             "RelativeFilename": "icon00.png"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "ColorPicker",
+        "Width": 272,
+        "Height": 272,
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "colorCircle",
+            "X": 60,
+            "Y": 60,
+            "Width": 152,
+            "Height": 152,
+            "RelativeFilename": "circleColorFade.png"
+          },
+          {
+            "Type": "Circle",
+            "Name": "currentColor",
+            "X": 115,
+            "Y": 116,
+            "Width": 40,
+            "Height": 40,
+            "Color": {
+              "Red": 135,
+              "Green": 135,
+              "Blue": 135
+            },
+            "CenterX": 20.0,
+            "CenterY": 20.0,
+            "Radius": 20.0,
+            "EndAngle": 360.0,
+            "CapPrecision": "Butt"
+          },
+          {
+            "Type": "Image",
+            "Name": "selector",
+            "X": 60,
+            "Y": 124,
+            "Width": 23,
+            "Height": 23,
+            "RelativeFilename": "selector.png"
           }
         ],
         "Interactions": []

@@ -16,15 +16,20 @@ extern DHT11_Data_TypeDef dht11_data;
 //#endif
 //}
 
-Model::Model() : modelListener(0), count(0)
+Model::Model() : modelListener(0), count(0), tickCounter(0)
 {
 
 }
 
 void Model::tick()
 {
-       if(modelListener != 0)
-       {
-               modelListener->newDHTValue(&dht11_data);
-       }
+    tickCounter++;
+    if (tickCounter >= 60)
+    {
+        if(modelListener != 0)
+        {
+            modelListener->newDHTValue(&dht11_data);
+        }
+        tickCounter = 0;
+    }
 }

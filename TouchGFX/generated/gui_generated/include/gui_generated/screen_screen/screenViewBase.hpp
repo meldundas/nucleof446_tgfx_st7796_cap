@@ -16,6 +16,7 @@
 #include <touchgfx/containers/Slider.hpp>
 #include <touchgfx/containers/progress_indicators/ImageProgress.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <gui/containers/ColorPicker.hpp>
 
 class screenViewBase : public touchgfx::View<screenPresenter>
 {
@@ -75,6 +76,7 @@ protected:
     touchgfx::TextAreaWithOneWildcard textTemperature;
     touchgfx::TextAreaWithOneWildcard textHumidity;
     touchgfx::TextArea textArea3;
+    ColorPicker colorPicker1;
 
     /*
      * Wildcard Buffers
@@ -87,6 +89,12 @@ protected:
     touchgfx::Unicode::UnicodeChar textHumidityBuffer[TEXTHUMIDITY_SIZE];
 
 private:
+
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint32_t CANVAS_BUFFER_SIZE = 7200;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 
     /*
      * Callback Declarations

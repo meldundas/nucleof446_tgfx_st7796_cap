@@ -75,9 +75,29 @@ public:
 
     protected:
 
-    ModelListener* modelListener;
 
-    int count;
+
+    
+
+
+
+        ModelListener* modelListener;
+
+
+
+    
+
+
+
+        int count;
+
+
+
+    
+
+
+
+        int tickCounter;
 
 };
 
