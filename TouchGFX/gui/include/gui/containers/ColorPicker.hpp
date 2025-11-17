@@ -30,7 +30,7 @@ private:
         MID_RADIUS = 65,
         MAX_RADIUS = 76,
         MAX_DIST = MAX_RADIUS * MAX_RADIUS,
-        MIN_RADIUS = 55,
+        MIN_RADIUS = 0,
         MIN_DIST = MIN_RADIUS * MIN_RADIUS
     };
 

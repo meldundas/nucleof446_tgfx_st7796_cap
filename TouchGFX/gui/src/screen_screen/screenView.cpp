@@ -3,7 +3,9 @@
 
 screenView::screenView()
 {
-
+    textAreaColor.setXY(10, 10); // Example position, adjust as needed
+    textAreaColor.setWildcard(textAreaColorBuffer);
+    add(textAreaColor); // Add to the container
 }
 
 void screenView::setupScreen()
@@ -52,6 +54,12 @@ void screenView::sliderValueChanged(int value)
         counter = value;
         setCount(counter);
     }
+}
+
+void screenView::setColorText(int value)
+{
+    Unicode::snprintf(textAreaColorBuffer, TEXTAREACOLOR_SIZE, "%03d", value);
+    textAreaColor.invalidate();
 }
 
 void screenView::setDht(DHT11_Data_TypeDef *dhtVal)
