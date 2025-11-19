@@ -16,13 +16,18 @@ public:
     virtual void handleClickEvent(const ClickEvent& evt);
     virtual void handleDragEvent(const DragEvent& evt);
 
-
+    void setColorConfirmedCallback(GenericCallback<colortype>& callback)
+    {
+        colorConfirmedCallback = &callback;
+    }
 
     colortype getRgbColor();
 
 private:
     uint32_t colorDistances(uint32_t x, uint32_t y);
     void setCurrentColor(uint32_t x, uint32_t y);
+
+    GenericCallback<colortype>* colorConfirmedCallback;
 
     // Distances used for calculating the color selected in the color wheel.
     enum

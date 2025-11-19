@@ -60,8 +60,8 @@ screenViewBase::screenViewBase() :
     slider.setXY(439, 56);
     slider.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_SLIDER_VERTICAL_THIN_TRACK_SMALL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_SLIDER_VERTICAL_THIN_FILLER_SMALL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_SLIDER_VERTICAL_THIN_ROUND_LIGHT_ID));
     slider.setupVerticalSlider(9, 12, 0, 0, 200);
-    slider.setValueRange(0, 100);
-    slider.setValue(0);
+    slider.setValueRange(0, 255);
+    slider.setValue(125);
     add(slider);
 
     imageProgress.setXY(100, 255);
@@ -112,6 +112,18 @@ screenViewBase::screenViewBase() :
 
     colorPicker1.setXY(104, 0);
     add(colorPicker1);
+
+    textAreaColor.setXY(26, 196);
+    textAreaColor.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
+    textAreaColor.setLinespacing(0);
+    textAreaColor.setWildcard(touchgfx::TypedText(T_ARGB).getText());
+    textAreaColor.resizeToCurrentText();
+    textAreaColor.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2I8Y));
+    add(textAreaColor);
+
+    box1.setPosition(330, 111, 50, 50);
+    box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(box1);
 }
 
 screenViewBase::~screenViewBase()

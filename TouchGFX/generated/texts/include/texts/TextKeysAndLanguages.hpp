@@ -12,6 +12,8 @@ enum LANGUAGES
 
 enum TEXTS
 {
+    T_ARGB,
+    T___SINGLEUSE_2I8Y,
     T___SINGLEUSE_7NPE,
     T_HUMIDITY,
     T___SINGLEUSE_G84W,

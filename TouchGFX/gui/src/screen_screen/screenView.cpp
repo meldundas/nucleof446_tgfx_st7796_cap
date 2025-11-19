@@ -14,6 +14,9 @@ void screenView::setupScreen()
     counter = 0;
     slider.setValue(counter);
     setCount(counter);
+
+    static touchgfx::Callback<screenView, colortype> colorConfirmedCallback(this, &screenView::updateColor);
+    colorPicker1.setColorConfirmedCallback(colorConfirmedCallback);
 }
 
 void screenView::tearDownScreen()
@@ -59,6 +62,20 @@ void screenView::sliderValueChanged(int value)
 void screenView::setColorText(int value)
 {
     Unicode::snprintf(textAreaColorBuffer, TEXTAREACOLOR_SIZE, "%03d", value);
+    textAreaColor.invalidate();
+}
+
+void screenView::updateColor(colortype color)
+{
+    box1.setColor(color);
+    box1.invalidate();
+    textAreaColor.setColor(color);
+    uint8_t r = touchgfx::Color::getRed(color);
+    uint8_t g = touchgfx::Color::getGreen(color);
+    uint8_t b = touchgfx::Color::getBlue(color);
+
+    Unicode::snprintf(textAreaColorBuffer, TEXTAREACOLOR_SIZE, "#%02X%02X%02X", r, g, b);
+    textAreaColor.setWildcard(textAreaColorBuffer);
     textAreaColor.invalidate();
 }
 

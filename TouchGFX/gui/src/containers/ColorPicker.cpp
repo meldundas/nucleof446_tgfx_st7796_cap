@@ -4,6 +4,7 @@
 #include <math.h>
 
 ColorPicker::ColorPicker() :
+    colorConfirmedCallback(0),
     color_center_x(0),
     color_center_y(0),
     isPressed(false),
@@ -36,9 +37,16 @@ void ColorPicker::handleClickEvent(const ClickEvent& evt)
             setCurrentColor(uint32_t(MID_RADIUS * cosf(angle) + color_center_x), uint32_t(MID_RADIUS * sinf(angle) + color_center_y));
         }
     }
-    if (evt.getType() != ClickEvent::PRESSED)   // Either released or canceled
+    else if (evt.getType() == ClickEvent::RELEASED)
     {
-        isPressed = false;
+        if (isPressed)
+        {
+            isPressed = false;
+            if (colorConfirmedCallback && colorConfirmedCallback->isValid())
+            {
+                colorConfirmedCallback->execute(selectedColor);
+            }
+        }
     }
 }
 
@@ -68,6 +76,10 @@ void ColorPicker::setCurrentColor(uint32_t x, uint32_t y)
 
     const Bitmap bitmapColors = Bitmap(BITMAP_CIRCLECOLORFADE_ID);  // Fetch bitmap
     const uint8_t* pixels = (const uint8_t*)bitmapColors.getData(); // Save bitmap data
+    if (!pixels)
+    {
+        return;
+    }
     int16_t _x = (int16_t)x;
     int16_t _y = (int16_t)y;
 

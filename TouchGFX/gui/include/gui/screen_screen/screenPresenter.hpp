@@ -39,7 +39,6 @@ public:
 
                 void newDHTValue(DHT11_Data_TypeDef *dhtVal);
 
-            
 
             private:
     screenPresenter();

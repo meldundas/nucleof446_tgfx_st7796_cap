@@ -77,6 +77,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard textHumidity;
     touchgfx::TextArea textArea3;
     ColorPicker colorPicker1;
+    touchgfx::TextAreaWithOneWildcard textAreaColor;
+    touchgfx::Box box1;
 
     /*
      * Wildcard Buffers

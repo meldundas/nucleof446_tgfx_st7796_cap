@@ -96,7 +96,8 @@
             "BackgroundX": 9,
             "BackgroundY": 12,
             "IndicatorMax": 200,
-            "ValueMax": 100,
+            "ValueMax": 255,
+            "InitValue": 125,
             "Preset": "alternate_theme\\presets\\slider\\vertical\\thin\\small_round.json"
           },
           {
@@ -215,6 +216,38 @@
             "Width": 272,
             "Height": 272,
             "CustomContainerDefinitionName": "ColorPicker"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textAreaColor",
+            "X": 26,
+            "Y": 196,
+            "Width": 116,
+            "Height": 20,
+            "TextId": "__SingleUse_2I8Y",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 163,
+              "Green": 247,
+              "Blue": 7
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "ARGB"
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "X": 330,
+            "Y": 111,
+            "Width": 50,
+            "Height": 50,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
           }
         ],
         "Interactions": [
