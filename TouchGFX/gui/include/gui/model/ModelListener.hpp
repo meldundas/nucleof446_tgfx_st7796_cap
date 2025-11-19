@@ -15,7 +15,7 @@ public:
         model = m;
     }
 
-    virtual void newDHTValue(DHT11_Data_TypeDef *dhtVal){}
+    virtual void newDHTValue(DHT_data *dhtVal){}
 protected:
     Model* model;
 };

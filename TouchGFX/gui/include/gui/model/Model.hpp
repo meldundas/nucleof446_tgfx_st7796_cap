@@ -1,7 +1,7 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 
-#include "dht11.h"
+#include "dht.h"
 
 class ModelListener;
 
@@ -65,7 +65,7 @@ public:
 
 
 
-        void getDHTValue(DHT11_Data_TypeDef *dhtVal);
+        void getDHTValue(DHT_data *dhtVal);
 
 
 

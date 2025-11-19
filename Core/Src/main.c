@@ -31,13 +31,19 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
-#include "dht11.h"
+#include "dht.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-DHT11_Data_TypeDef dht11_data;
+DHT_sensor am2302 = {
+    .DHT_Port = DHT11_GPIO_Port,
+    .DHT_Pin = DHT11_Pin,
+    .type = DHT22,
+    .pullUp = GPIO_PULLUP
+};
 
+DHT_data dht_data;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -53,7 +59,7 @@ DHT11_Data_TypeDef dht11_data;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+DHT_data dht11_data; // Using DHT_data from new driver directly
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -110,7 +116,6 @@ int main(void)
   MX_DAC_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-  DHT11_Init();
 #ifndef ST7796
   Displ_Init(Displ_Orientat_270);			// initialize display controller - set orientation parameter as per TouchGFX setup
 #else
@@ -126,12 +131,14 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-  MX_TouchGFX_Process();
+  MX_TouchGFX_Process(); // Re-enable TouchGFX processing
     /* USER CODE BEGIN 3 */
   static uint32_t last_dht11_read_tick = 0;
   if (HAL_GetTick() - last_dht11_read_tick >= 1000)
   {
-      DHT11_ReadData(&dht11_data);
+      dht_data = DHT_getData(&am2302);
+      dht11_data.temp = dht_data.temp;
+      dht11_data.hum = dht_data.hum;
       last_dht11_read_tick = HAL_GetTick();
   }
   }

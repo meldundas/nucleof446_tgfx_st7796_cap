@@ -3,6 +3,9 @@
 
 #include <gui_generated/containers/ColorPickerBase.hpp>
 #include <touchgfx/Color.hpp>
+#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/Box.hpp>
 
 #define SELECTOR_RADIUS 10
 
@@ -16,12 +19,12 @@ public:
     virtual void handleClickEvent(const ClickEvent& evt);
     virtual void handleDragEvent(const DragEvent& evt);
 
+    colortype getRgbColor();
+
     void setColorConfirmedCallback(GenericCallback<colortype>& callback)
     {
         colorConfirmedCallback = &callback;
     }
-
-    colortype getRgbColor();
 
 private:
     uint32_t colorDistances(uint32_t x, uint32_t y);
@@ -35,7 +38,7 @@ private:
         MID_RADIUS = 65,
         MAX_RADIUS = 76,
         MAX_DIST = MAX_RADIUS * MAX_RADIUS,
-        MIN_RADIUS = 0,
+        MIN_RADIUS = 0, // Set to 0 to allow selection to the center
         MIN_DIST = MIN_RADIUS * MIN_RADIUS
     };
 

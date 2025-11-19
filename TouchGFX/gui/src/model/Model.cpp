@@ -3,19 +3,19 @@
 
 extern "C"
 {
-extern DHT11_Data_TypeDef dht11_data;
+extern DHT_data dht_data;
 }
 
 
-void Model::getDHTValue(DHT11_Data_TypeDef *dhtVal)
+void Model::getDHTValue(DHT_data *dhtVal)
 {
 #ifdef SIMULATOR
 //     dhtVal = &dht11_data;
 
 
 #endif
-    dhtVal->humidity = dht11_data.humidity;
-    dhtVal->temperature = dht11_data.temperature;
+    dhtVal->hum = dht_data.hum;
+    dhtVal->temp = dht_data.temp;
 }
 
 Model::Model() : modelListener(0), count(0), tickCounter(0)
@@ -30,7 +30,7 @@ void Model::tick()
     {
         if(modelListener != 0)
         {
-            modelListener->newDHTValue(&dht11_data);
+            modelListener->newDHTValue(&dht_data);
         }
         tickCounter = 0;
     }

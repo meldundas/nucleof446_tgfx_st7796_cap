@@ -28,9 +28,7 @@ public:
     void buttonClickDown();
     void sliderValueChanged(int value);
 
-    void setDht(DHT11_Data_TypeDef *dhtVal);
-
-    void updateColor(colortype color);
+    void setDht(DHT_data *dhtVal);
 
     Unicode::UnicodeChar textAreaColorBuffer[5];
     static const uint16_t TEXTAREACOLOR_SIZE = 5;

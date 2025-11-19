@@ -52,9 +52,8 @@ void screenPresenter::slideChange(int newVal)
 }
 
 
-void screenPresenter::newDHTValue(DHT11_Data_TypeDef *dhtVal)
+void screenPresenter::newDHTValue(DHT_data *dhtVal)
 {
        view.setDht(dhtVal);
 
 }
-

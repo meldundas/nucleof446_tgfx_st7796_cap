@@ -14,9 +14,6 @@ void screenView::setupScreen()
     counter = 0;
     slider.setValue(counter);
     setCount(counter);
-
-    static touchgfx::Callback<screenView, colortype> colorConfirmedCallback(this, &screenView::updateColor);
-    colorPicker1.setColorConfirmedCallback(colorConfirmedCallback);
 }
 
 void screenView::tearDownScreen()
@@ -65,29 +62,15 @@ void screenView::setColorText(int value)
     textAreaColor.invalidate();
 }
 
-void screenView::updateColor(colortype color)
+void screenView::setDht(DHT_data *dhtVal)
 {
-    box1.setColor(color);
-    box1.invalidate();
-    textAreaColor.setColor(color);
-    uint8_t r = touchgfx::Color::getRed(color);
-    uint8_t g = touchgfx::Color::getGreen(color);
-    uint8_t b = touchgfx::Color::getBlue(color);
-
-    Unicode::snprintf(textAreaColorBuffer, TEXTAREACOLOR_SIZE, "#%02X%02X%02X", r, g, b);
-    textAreaColor.setWildcard(textAreaColorBuffer);
-    textAreaColor.invalidate();
-}
-
-void screenView::setDht(DHT11_Data_TypeDef *dhtVal)
-{
-        Unicode::snprintfFloat(textTemperatureBuffer, TEXTTEMPERATURE_SIZE, "%0.1f", dhtVal->temperature);
-        Unicode::snprintf(textHumidityBuffer, TEXTHUMIDITY_SIZE, "%d", dhtVal->humidity);
+        Unicode::snprintfFloat(textTemperatureBuffer, TEXTTEMPERATURE_SIZE, "%0.1f", dhtVal->temp);
+        Unicode::snprintf(textHumidityBuffer, TEXTHUMIDITY_SIZE, "%d", (int)dhtVal->hum);
 
         textTemperature.invalidate();
         textHumidity.invalidate();
 
-        imageProgress.setValue(dhtVal->humidity * 0.88); //244pixels / 280 pixels
+        imageProgress.setValue(dhtVal->hum * 0.88); //244pixels / 280 pixels
         imageProgress.invalidate();
 
          //.setColor(colorPicker1.getRgbColor());
