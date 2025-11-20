@@ -30,8 +30,10 @@ public:
 
     void setDht(DHT_data *dhtVal);
 
-    Unicode::UnicodeChar textAreaColorBuffer[5];
-    static const uint16_t TEXTAREACOLOR_SIZE = 5;
+    void updateColor(colortype color);
+
+    Unicode::UnicodeChar textAreaColorBuffer[10]; // For #AARRGGBB + null terminator
+    static const uint16_t TEXTAREACOLOR_SIZE = 10;
     void setColorText(int value);
 
 protected:

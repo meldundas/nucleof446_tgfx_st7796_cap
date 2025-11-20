@@ -137,6 +137,8 @@ int main(void)
   if (HAL_GetTick() - last_dht11_read_tick >= 1000)
   {
       dht_data = DHT_getData(&am2302);
+      printf("main.c - Raw DHT Temp: %.1f, Hum: %.1f\r\n", dht_data.temp, dht_data.hum); // Debug print
+
       dht11_data.temp = dht_data.temp;
       dht11_data.hum = dht_data.hum;
       last_dht11_read_tick = HAL_GetTick();

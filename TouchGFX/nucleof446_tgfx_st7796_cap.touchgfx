@@ -233,7 +233,9 @@
             },
             "AutoSize": true,
             "Wildcard1": {
-              "TextId": "ARGB"
+              "TextId": "ARGB",
+              "UseBuffer": true,
+              "BufferSize": 20
             }
           },
           {

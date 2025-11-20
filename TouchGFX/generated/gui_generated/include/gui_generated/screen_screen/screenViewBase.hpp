@@ -89,6 +89,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textTemperatureBuffer[TEXTTEMPERATURE_SIZE];
     static const uint16_t TEXTHUMIDITY_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textHumidityBuffer[TEXTHUMIDITY_SIZE];
+    static const uint16_t TEXTAREACOLOR_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar textAreaColorBuffer[TEXTAREACOLOR_SIZE];
 
 private:
 

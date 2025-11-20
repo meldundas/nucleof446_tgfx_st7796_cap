@@ -116,7 +116,8 @@ screenViewBase::screenViewBase() :
     textAreaColor.setXY(26, 196);
     textAreaColor.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
     textAreaColor.setLinespacing(0);
-    textAreaColor.setWildcard(touchgfx::TypedText(T_ARGB).getText());
+    Unicode::snprintf(textAreaColorBuffer, TEXTAREACOLOR_SIZE, "%s", touchgfx::TypedText(T_ARGB).getText());
+    textAreaColor.setWildcard(textAreaColorBuffer);
     textAreaColor.resizeToCurrentText();
     textAreaColor.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2I8Y));
     add(textAreaColor);
