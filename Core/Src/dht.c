@@ -1,9 +1,9 @@
 #include "dht.h"
 #include "main.h"
 
-#define lineDown() 		HAL_GPIO_WritePin(sensor->DHT_Port, sensor->DHT_Pin, GPIO_PIN_RESET)
-#define lineUp()		HAL_GPIO_WritePin(sensor->DHT_Port, sensor->DHT_Pin, GPIO_PIN_SET)
-#define getLine()		(HAL_GPIO_ReadPin(sensor->DHT_Port, sensor->DHT_Pin) == GPIO_PIN_SET)
+#define lineDown(sensor) 		HAL_GPIO_WritePin(sensor->DHT_Port, sensor->DHT_Pin, GPIO_PIN_RESET)
+#define lineUp(sensor)		HAL_GPIO_WritePin(sensor->DHT_Port, sensor->DHT_Pin, GPIO_PIN_SET)
+#define getLine(sensor)		(HAL_GPIO_ReadPin(sensor->DHT_Port, sensor->DHT_Pin) == GPIO_PIN_SET)
 //#define Delay(d)		HAL_Delay(d) // Millisecond delay is not precise enough
 
 // Microsecond delay function using DWT
@@ -13,8 +13,11 @@ static void DHT_Delay_us(uint32_t us) {
     while (DWT->CYCCNT - start < delay_cycles);
 }
 
-// Default high level on the line
-  lineUp();
+static void goToOutput(DHT_sensor *sensor) {
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  // Default high level on the line
+  lineUp(sensor);
 
   // Configure port as output
   GPIO_InitStruct.Pin = sensor->DHT_Pin;
@@ -61,10 +64,9 @@ DHT_data DHT_getData(DHT_sensor *sensor) {
 	// Set pin to output
 	goToOutput(sensor);
 	// Pull data line low for 18 ms
-	lineDown();
-	HAL_Delay(18); // Keep millisecond delay for initial pull down
+	  lineDown(sensor);	HAL_Delay(18); // Keep millisecond delay for initial pull down
 	// Pull line high, set port to input
-	lineUp();
+	lineUp(sensor);
 	goToInput(sensor);
 
 
@@ -75,7 +77,7 @@ DHT_data DHT_getData(DHT_sensor *sensor) {
 	/* Wait for response from sensor */
 	uint16_t timeout = 0;
 	// Wait for fall
-	while(getLine()) {
+	while(getLine(sensor)) {
 		timeout++;
 		if (timeout > DHT_TIMEOUT) {
 			#ifdef DHT_IRQ_CONTROL
@@ -91,7 +93,7 @@ DHT_data DHT_getData(DHT_sensor *sensor) {
 	}
 	timeout = 0;
 	// Wait for rise
-	while(!getLine()) {
+	while(!getLine(sensor)) {
 		timeout++;
 		if (timeout > DHT_TIMEOUT) {
 			#ifdef DHT_IRQ_CONTROL
@@ -107,7 +109,7 @@ DHT_data DHT_getData(DHT_sensor *sensor) {
 	}
 	timeout = 0;
 	// Wait for fall
-	while(getLine()) {
+	while(getLine(sensor)) {
 		timeout++;
 		if (timeout > DHT_TIMEOUT) {
 			#ifdef DHT_IRQ_CONTROL
@@ -123,11 +125,11 @@ DHT_data DHT_getData(DHT_sensor *sensor) {
 		for(uint8_t b = 7; b != 255; b--) {
 			uint16_t hT = 0, lT = 0;
 			// While line is low, increment lT
-			while(!getLine() && lT != 65535) lT++;
+			while(!getLine(sensor) && lT != 65535) lT++;
             DHT_Delay_us(1); // Small delay to prevent tight loop issues
 			// While line is high, increment hT
 			timeout = 0;
-			while(getLine()&& hT != 65535) hT++;
+			while(getLine(sensor)&& hT != 65535) hT++;
             DHT_Delay_us(1); // Small delay to prevent tight loop issues
 			// If hT is greater than lT, a '1' was received
 			if(hT > lT) rawData[a] |= (1<<b);
