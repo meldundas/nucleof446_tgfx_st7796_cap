@@ -46,16 +46,10 @@ void screenPresenter::decrementCount()
 }
 
 
-void screenPresenter::slideChange(int newVal)
-{
-	view.setCount(newVal);
-	model->setCount(newVal);
-}
-
 
 void screenPresenter::newDHTValue(DHT_data *dhtVal)
 {
-       printf("screenPresenter::newDHTValue() - Temp: %.1f, Hum: %.1f\r\n", dhtVal->temp, dhtVal->hum); // Debug print
+       //printf("screenPresenter::newDHTValue() - Temp: %.1f, Hum: %.1f\r\n", dhtVal->temp, dhtVal->hum); // Debug print
        view.setDht(dhtVal);
 
 }

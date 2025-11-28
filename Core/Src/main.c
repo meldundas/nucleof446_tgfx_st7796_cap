@@ -90,9 +90,9 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-  DWT->CYCCNT = 0;
-  DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+//  CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+//  DWT->CYCCNT = 0;
+//  DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -131,13 +131,13 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-  MX_TouchGFX_Process(); // Re-enable TouchGFX processing
+  MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
   static uint32_t last_dht11_read_tick = 0;
   if (HAL_GetTick() - last_dht11_read_tick >= 1000)
   {
       dht_data = DHT_getData(&am2302);
-      printf("main.c - Raw DHT Temp: %.1f, Hum: %.1f\r\n", dht_data.temp, dht_data.hum); // Debug print
+      //printf("main.c - Raw DHT Temp: %.1f, Hum: %.1f\r\n", dht_data.temp, dht_data.hum); // Debug print
 
       dht11_data.temp = dht_data.temp;
       dht11_data.hum = dht_data.hum;

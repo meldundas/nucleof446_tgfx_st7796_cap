@@ -26,19 +26,20 @@ public:
 
     void buttonClickUp();
     void buttonClickDown();
-    void sliderValueChanged(int value);
+
+    void sliderValueUpdated(int value);
 
     void setDht(DHT_data *dhtVal);
 
     void updateColor(colortype color);
 
-    Unicode::UnicodeChar textAreaColorBuffer[10]; // For #AARRGGBB + null terminator
-    static const uint16_t TEXTAREACOLOR_SIZE = 10;
+
+
+
     void setColorText(int value);
 
 protected:
     int counter;
-    touchgfx::TextAreaWithOneWildcard textAreaColor;
 };
 
 #endif // SCREENVIEW_HPP

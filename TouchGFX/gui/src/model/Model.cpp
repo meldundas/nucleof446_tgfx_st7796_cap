@@ -28,14 +28,14 @@ Model::Model() : modelListener(0), count(0), tickCounter(0)
 void Model::tick()
 {
     tickCounter++;
-    printf("Model::tick() called, tickCounter: %d\r\n", tickCounter); // Debug print
+    //printf("Model::tick() called, tickCounter: %d\r\n", tickCounter); // Debug print
     // Temporarily remove condition for debugging
-    // if (tickCounter >= 60)
+     if (tickCounter >= 60)
     {
         if(modelListener != 0)
         {
             modelListener->newDHTValue(&dht_data);
         }
-        // tickCounter = 0; // Don't reset if condition is removed
+        tickCounter = 0; // Don't reset if condition is removed
     }
 }

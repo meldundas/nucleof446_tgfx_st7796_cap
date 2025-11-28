@@ -220,9 +220,9 @@
           {
             "Type": "TextArea",
             "Name": "textAreaColor",
-            "X": 26,
-            "Y": 196,
-            "Width": 116,
+            "X": 10,
+            "Y": 293,
+            "Width": 143,
             "Height": 20,
             "TextId": "__SingleUse_2I8Y",
             "TextRotation": "0",
@@ -231,7 +231,6 @@
               "Green": 247,
               "Blue": 7
             },
-            "AutoSize": true,
             "Wildcard1": {
               "TextId": "ARGB",
               "UseBuffer": true,
@@ -279,11 +278,12 @@
           {
             "InteractionName": "InteractionSlider",
             "Trigger": {
-              "Type": "TriggerNone"
+              "Type": "TriggerSliderValueChanged",
+              "TriggerComponent": "slider"
             },
             "Action": {
-              "Type": "ActionExecuteCode",
-              "Code": "presenter->slideChange(value);"
+              "Type": "ActionCustom",
+              "FunctionName": "sliderValueUpdated"
             }
           }
         ],

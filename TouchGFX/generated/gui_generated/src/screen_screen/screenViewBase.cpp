@@ -9,7 +9,8 @@
 
 screenViewBase::screenViewBase() :
     updateItemCallback(this, &screenViewBase::updateItemCallbackHandler),
-    buttonCallback(this, &screenViewBase::buttonCallbackHandler)
+    buttonCallback(this, &screenViewBase::buttonCallbackHandler),
+    sliderValueChangedCallback(this, &screenViewBase::sliderValueChangedCallbackHandler)
 {
     touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
@@ -62,6 +63,7 @@ screenViewBase::screenViewBase() :
     slider.setupVerticalSlider(9, 12, 0, 0, 200);
     slider.setValueRange(0, 255);
     slider.setValue(125);
+    slider.setNewValueCallback(sliderValueChangedCallback);
     add(slider);
 
     imageProgress.setXY(100, 255);
@@ -113,12 +115,11 @@ screenViewBase::screenViewBase() :
     colorPicker1.setXY(104, 0);
     add(colorPicker1);
 
-    textAreaColor.setXY(26, 196);
+    textAreaColor.setPosition(10, 293, 143, 20);
     textAreaColor.setColor(touchgfx::Color::getColorFromRGB(163, 247, 7));
     textAreaColor.setLinespacing(0);
     Unicode::snprintf(textAreaColorBuffer, TEXTAREACOLOR_SIZE, "%s", touchgfx::TypedText(T_ARGB).getText());
     textAreaColor.setWildcard(textAreaColorBuffer);
-    textAreaColor.resizeToCurrentText();
     textAreaColor.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2I8Y));
     add(textAreaColor);
 
@@ -157,6 +158,17 @@ void screenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
         //When buttonWithIconDown clicked execute C++ code
         //Execute C++ code
         presenter->decrementCount();
+    }
+}
+
+void screenViewBase::sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value)
+{
+    if (&src == &slider)
+    {
+        //InteractionSlider
+        //When slider value changed call virtual function
+        //Call sliderValueUpdated
+        sliderValueUpdated(value);
     }
 }
 

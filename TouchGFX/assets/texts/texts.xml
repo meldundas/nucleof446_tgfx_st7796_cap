@@ -10,7 +10,7 @@
         <Translation Language="GB">FFFF0000</Translation>
       </Text>
       <Text Id="__SingleUse_2I8Y" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">#&lt;value&gt;</Translation>
+        <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_7NPE" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">%</Translation>

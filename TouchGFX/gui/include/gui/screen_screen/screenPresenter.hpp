@@ -27,19 +27,13 @@ public:
 
         virtual ~screenPresenter() {}
 
-    
-
         void incrementCount();
 
         void decrementCount();
 
-                void slideChange(int newVal);
+        void newDHTValue(DHT_data *dhtVal);
 
-        
 
-                void newDHTValue(DHT_data *dhtVal);
-
-            
 
             private:
     screenPresenter();

@@ -8,9 +8,9 @@ screenView::screenView()
 void screenView::setupScreen()
 {
     screenViewBase::setupScreen();
-    counter = 0;
+    counter = 200;
     slider.setValue(counter);
-    setCount(counter);
+    //setCount(counter);
 
     static touchgfx::Callback<screenView, colortype> colorConfirmedCallback(this, &screenView::updateColor);
     colorPicker1.setColorConfirmedCallback(colorConfirmedCallback);
@@ -33,15 +33,6 @@ void screenView::buttonCallbackHandler(const touchgfx::AbstractButton& src)
     }
 }
 
-void screenView::sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value)
-{
-    if (&src == &slider)
-    {
-        sliderValueChanged(value);
-        // Also update the AARRGGBB display when slider value changes
-        updateColor(colorPicker1.getRgbColor());
-    }
-}
 
 void screenView::setCount(int count)
 {
@@ -49,13 +40,15 @@ void screenView::setCount(int count)
     textAreaCount.invalidate();
 }
 
-void screenView::sliderValueChanged(int value)
+
+void screenView::sliderValueUpdated(int value)
 {
     if (counter != value)
     {
         counter = value;
-        setCount(counter);
+        //setCount(counter);
     }
+    updateColor(colorPicker1.getRgbColor());
 }
 
 void screenView::setColorText(int value)
@@ -69,28 +62,27 @@ void screenView::updateColor(colortype color)
 {
     box1.setColor(color);
     box1.invalidate();
-    textAreaColor.setColor(color);
 
     uint8_t r = touchgfx::Color::getRed(color);
     uint8_t g = touchgfx::Color::getGreen(color);
     uint8_t b = touchgfx::Color::getBlue(color);
     uint8_t a = slider.getValue(); // Get alpha from slider
 
-    // Use a temporary char buffer for sprintf
-    char tempBuffer[TEXTAREACOLOR_SIZE]; // TEXTAREACOLOR_SIZE is 10 for "#AARRGGBB\0"
+    char tempBuffer[TEXTAREACOLOR_SIZE];
     sprintf(tempBuffer, "#%02X%02X%02X%02X", a, r, g, b);
 
-    // Copy the char string to the UnicodeChar buffer
-    Unicode::strncpy(textAreaColorBuffer, tempBuffer, TEXTAREACOLOR_SIZE);
+    // Add printf for debugging
+    printf("updateColor: %s\r\n", tempBuffer);
 
-    // printf("updateColor: %s\r\n", tempBuffer); // Debug print from char buffer - Removed
-    textAreaColor.setWildcard(textAreaColorBuffer);
+    Unicode::strncpy(screenViewBase::textAreaColorBuffer, tempBuffer, TEXTAREACOLOR_SIZE);
+
+    textAreaColor.setWildcard(screenViewBase::textAreaColorBuffer);
     textAreaColor.invalidate();
 }
 
 void screenView::setDht(DHT_data *dhtVal)
 {
-        printf("screenView::setDht() - Temp: %.1f, Hum: %.1f\r\n", dhtVal->temp, dhtVal->hum); // Debug print
+        //printf("screenView::setDht() - Temp: %.1f, Hum: %.1f\r\n", dhtVal->temp, dhtVal->hum); // Debug print
         Unicode::snprintfFloat(textTemperatureBuffer, TEXTTEMPERATURE_SIZE, "%0.1f", dhtVal->temp);
         Unicode::snprintf(textHumidityBuffer, TEXTHUMIDITY_SIZE, "%d", (int)dhtVal->hum);
 
