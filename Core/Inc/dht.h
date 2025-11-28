@@ -21,6 +21,8 @@ typedef enum {
 	DHT22
 } DHT_type;
 
+
+
 /* Sensor object structure */
 typedef struct {
 	GPIO_TypeDef *DHT_Port;	// Sensor port (GPIOA, GPIOB, etc)
@@ -35,6 +37,8 @@ typedef struct {
 	float lastHum;			 // Last humidity value
 	#endif
 } DHT_sensor;
+
+
 
 
 /* Function prototypes */

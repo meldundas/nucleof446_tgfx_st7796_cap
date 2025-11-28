@@ -31,7 +31,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include <stdbool.h>
 #include "dht.h"
+#include "atc.h"
+#include "espat.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -42,6 +45,7 @@ DHT_sensor am2302 = {
     .type = DHT22,
     .pullUp = GPIO_PULLUP
 };
+
 
 DHT_data dht_data;
 /* USER CODE END PTD */
@@ -60,6 +64,12 @@ DHT_data dht_data;
 
 /* USER CODE BEGIN PV */
 DHT_data dht11_data; // Using DHT_data from new driver directly
+ATC_HandleTypeDef espat;
+bool connected;
+//event callback structure
+void mqttRX();
+
+const ATC_EventTypeDef events[] = { { "+MQTTSUBRECV:0", mqttRX } };
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -70,7 +80,11 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void mqttRX()
+{
 
+	printf("sub event: %s\r\n",espat.pRxBuff);
+}
 /* USER CODE END 0 */
 
 /**
@@ -90,9 +104,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-//  CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-//  DWT->CYCCNT = 0;
-//  DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -123,12 +135,19 @@ int main(void)
 #endif
   Displ_BackLight('I');  					// initialize backlight
   HAL_TIM_Base_Start_IT(&TGFX_T);			// start TouchGFX tick timer
+
+
+  ATC_Init(&espat, &huart1, 512, "ESPAT"); //init espAT WiFi
+  ATC_SetEvents(&espat, events); 	//set esp callbacks
+
+  subscribeToMQTT();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  ATC_Loop(&espat);
     /* USER CODE END WHILE */
 
   MX_TouchGFX_Process();
@@ -143,6 +162,23 @@ int main(void)
       dht11_data.hum = dht_data.hum;
       last_dht11_read_tick = HAL_GetTick();
   }
+
+  static uint32_t last_thingspeak_tick = 0;
+  if (HAL_GetTick() - last_thingspeak_tick >= 30000)
+  {
+	  sendToThingspeak();
+
+      last_thingspeak_tick = HAL_GetTick();
+  }
+
+  static uint32_t last_mqtt_tick = 0;
+  if (HAL_GetTick() - last_mqtt_tick >= 60000)
+  {
+	  sendToMQTT();
+
+      last_mqtt_tick = HAL_GetTick();
+  }
+
   }
   /* USER CODE END 3 */
 }
